@@ -8,7 +8,7 @@
   <style>
     :root {
       --primary: #3b82f6; --primary-hover: #2563eb;
-      --bg: #f8fafc; --surface: #ffffff;
+      --bg: #f1f5f9; --surface: #ffffff;
       --text-main: #0f172a; --text-muted: #64748b;
       --border: #e2e8f0; --sidebar-bg: #0f172a; --sidebar-text: #94a3b8;
       --success: #10b981; --warning: #f59e0b; --danger: #ef4444;
@@ -41,84 +41,81 @@
 
     /* Form Elements */
     .section-group { margin-bottom: 32px; }
-    .section-title { font-size: 18px; font-weight: 900; margin-bottom: 16px; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
-    .section-title span { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: var(--primary); color: #fff; border-radius: 6px; font-size: 13px; }
+    .section-title { font-size: 20px; font-weight: 900; margin-bottom: 20px; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+    .section-title span { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--primary); color: #fff; border-radius: 8px; font-size: 14px; }
     
-    .card { background: #f8fafc; border-radius: 12px; border: 1px solid var(--border); padding: 20px; }
+    .card { background: var(--surface); border-radius: 16px; border: 1px solid var(--border); padding: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
     
-    .input-group { margin-bottom: 16px; }
+    .input-group { margin-bottom: 20px; }
     .input-group:last-child { margin-bottom: 0; }
-    .input-group label { display: block; font-size: 13px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; }
-    .input-group input[type="text"], .input-group input[type="number"] { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; font-family: inherit; transition: all 0.2s; background: #fff; }
-    .input-group input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
-    .help-text { font-size: 11px; color: var(--text-muted); margin-top: 6px; display: block; line-height: 1.4; }
+    .input-group label { display: block; font-size: 14px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; }
+    .input-group input[type="text"], .input-group input[type="number"] { width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; font-family: inherit; transition: all 0.2s; background: #f8fafc; color: var(--text-main); }
+    .input-group input:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); }
+    .help-text { font-size: 12px; color: var(--text-muted); margin-top: 6px; display: block; line-height: 1.4; }
     
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
     /* Toggle Switch */
-    .toggle-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .toggle-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; background: #fff; transition: all 0.2s; }
-    .toggle-item:hover { border-color: #cbd5e1; }
-    .toggle-label { font-size: 13px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
-    .switch { position: relative; display: inline-block; width: 40px; height: 22px; }
+    .toggle-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .toggle-item { display: flex; align-items: center; justify-content: space-between; padding: 16px; border: 1px solid var(--border); border-radius: 12px; background: #f8fafc; transition: all 0.2s; }
+    .toggle-item:hover { border-color: #cbd5e1; background: #fff; }
+    .toggle-label { font-size: 15px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+    .switch { position: relative; display: inline-block; width: 48px; height: 26px; }
     .switch input { opacity: 0; width: 0; height: 0; }
-    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .3s; border-radius: 22px; }
-    .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .3s; border-radius: 26px; }
+    .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     input:checked + .slider { background-color: var(--primary); }
-    input:checked + .slider:before { transform: translateX(18px); }
-
-    /* Preview Panel UI */
-    .pr-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; }
-    .pr-tab { padding: 10px 20px; background: transparent; color: #94a3b8; font-weight: 800; border: none; font-size: 15px; border-radius: 8px; cursor: pointer; transition: 0.2s; }
-    .pr-tab:hover { color: #fff; background: rgba(255,255,255,0.05); }
-    .pr-tab.active { background: var(--primary); color: #fff; }
-
-    .pr-content { flex: 1; display: none; flex-direction: column; overflow: hidden; }
-    .pr-content.active { display: flex; animation: fadeIn 0.3s ease; }
-
-    /* Visual Editor Canvas */
-    .canvas-wrapper { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000; border-radius: 12px; border: 1px solid #334155; position: relative; }
-    .preview-canvas { position: relative; width: 100%; aspect-ratio: 16/9; max-height: 100%; background: #0f172a; overflow: hidden; }
-    .preview-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9; pointer-events: none; }
-    .preview-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,23,42,0.3) 0%, rgba(15,23,42,0.8) 70%, rgba(248,250,252,1) 100%); pointer-events: none; }
-    .preview-title { position: absolute; left: 6%; bottom: 18%; font-size: clamp(24px, 4vw, 56px); font-weight: 900; color: #fff; margin: 0; pointer-events: none; z-index: 5; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-    
-    .draggable-item { position: absolute; cursor: grab; user-select: none; z-index: 10; padding: 4px; border: 1px solid transparent; transition: border 0.2s; }
-    .draggable-item:hover { border: 1px dashed rgba(255,255,255,0.5); }
-    .draggable-item:active { cursor: grabbing; border: 1px dashed #fff; }
-    .draggable-item img { width: 100%; height: auto; display: block; pointer-events: none; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
-    .resize-handle { position: absolute; right: -6px; bottom: -6px; width: 16px; height: 16px; background: #fff; border: 3px solid var(--primary); border-radius: 50%; cursor: nwse-resize; z-index: 15; box-shadow: 0 2px 5px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.2s; }
-    .draggable-item:hover .resize-handle { opacity: 1; }
+    input:checked + .slider:before { transform: translateX(22px); }
 
     /* Output Area */
-    #output-code { flex: 1; width: 100%; border-radius: 12px; background: #020617; color: #a5b4fc; font-family: ui-monospace, monospace; font-size: 13px; padding: 24px; border: 1px solid #1e293b; resize: none; outline: none; line-height: 1.5; margin-bottom: 16px; }
+    #output-code { flex: 1; width: 100%; margin-top: 16px; border-radius: 12px; background: #0f172a; color: #a5b4fc; font-family: ui-monospace, monospace; font-size: 13px; padding: 20px; border: 1px solid #334155; resize: none; outline: none; line-height: 1.5; }
     #output-code::-webkit-scrollbar { width: 8px; }
-    #output-code::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-    
+    #output-code::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
     .btn-main { width: 100%; padding: 16px; background: var(--primary); color: white; font-size: 16px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
     .btn-main:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(59,130,246,0.4); }
     .btn-outline { width: 100%; padding: 14px; background: transparent; color: #38bdf8; font-size: 15px; font-weight: 800; border: 2px solid #0284c7; border-radius: 12px; cursor: pointer; transition: 0.2s; margin-top: 16px; }
     .btn-outline:hover { background: rgba(2, 132, 199, 0.1); }
 
     /* Manual Tab */
-    .manual-wrapper { padding: 40px; max-width: 900px; margin: 0 auto; }
+    .manual-wrapper { max-width: 1000px; margin: 0 auto; }
     .manual-header { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: #fff; padding: 48px; border-radius: 20px; margin-bottom: 32px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
     .manual-header::after { content: ''; position: absolute; right: -50px; top: -50px; width: 200px; height: 200px; background: rgba(59,130,246,0.2); border-radius: 50%; blur: 20px; }
-    .manual-header h1 { font-size: 32px; font-weight: 900; margin-bottom: 12px; color: #fff; }
-    .manual-header p { font-size: 15px; color: #cbd5e1; margin: 0; line-height: 1.6; }
+    .manual-header h1 { font-size: 36px; font-weight: 900; margin-bottom: 12px; color: #fff; }
+    .manual-header p { font-size: 16px; color: #cbd5e1; margin: 0; line-height: 1.6; }
     
-    .manual-section { background: #fff; padding: 32px; border-radius: 20px; margin-bottom: 24px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-    .manual-section-title { font-size: 20px; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-    .manual-section-title .icon-bg { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: #eff6ff; color: var(--primary); border-radius: 10px; font-size: 18px; }
+    .manual-section { background: #fff; padding: 40px; border-radius: 20px; margin-bottom: 24px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .manual-section-title { font-size: 22px; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .manual-section-title .icon-bg { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: #eff6ff; color: var(--primary); border-radius: 10px; font-size: 20px; }
     
-    .step-box { background: #f8fafc; padding: 20px; border-left: 4px solid var(--primary); border-radius: 0 12px 12px 0; margin-bottom: 16px; border: 1px solid #e2e8f0; border-left-width: 4px; }
-    .step-box h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
-    .step-box p { font-size: 14px; color: #475569; margin: 0; line-height: 1.6; }
-    .badge { display: inline-block; padding: 4px 8px; background: #f1f5f9; color: #475569; font-size: 12px; font-weight: 800; border-radius: 6px; border: 1px solid #cbd5e1; }
+    .step-box { background: #f8fafc; padding: 24px; border-left: 4px solid var(--primary); border-radius: 0 12px 12px 0; margin-bottom: 20px; border: 1px solid #e2e8f0; border-left-width: 4px; }
+    .step-box:last-child { margin-bottom: 0; }
+    .step-box h4 { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .step-box p { font-size: 15px; color: #475569; margin: 0 0 12px 0; line-height: 1.6; }
+    .badge { display: inline-block; padding: 4px 10px; background: #f1f5f9; color: #475569; font-size: 13px; font-weight: 800; border-radius: 6px; border: 1px solid #cbd5e1; }
     .badge.highlight { background: #eff6ff; color: var(--primary); border-color: #bfdbfe; }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Visual Editor Preview Styles */
+    .pr-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; }
+    .pr-tab { padding: 10px 20px; background: transparent; color: #94a3b8; font-weight: 800; border: none; font-size: 15px; border-radius: 8px; cursor: pointer; transition: 0.2s; }
+    .pr-tab:hover { color: #fff; background: rgba(255,255,255,0.05); }
+    .pr-tab.active { background: var(--primary); color: #fff; }
+    .pr-content { flex: 1; display: none; flex-direction: column; overflow: hidden; }
+    .pr-content.active { display: flex; animation: fadeIn 0.3s ease; }
+    .canvas-wrapper { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000; border-radius: 12px; border: 1px solid #334155; position: relative; }
+    .preview-canvas { position: relative; width: 100%; aspect-ratio: 16/9; max-height: 100%; background: #0f172a; overflow: hidden; }
+    .preview-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9; pointer-events: none; }
+    .preview-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(15,23,42,0.3) 0%, rgba(15,23,42,0.8) 70%, rgba(248,250,252,1) 100%); pointer-events: none; }
+    .preview-title { position: absolute; left: 6%; bottom: 18%; font-size: clamp(24px, 4vw, 56px); font-weight: 900; color: #fff; margin: 0; pointer-events: none; z-index: 5; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+    .draggable-item { position: absolute; cursor: grab; user-select: none; z-index: 10; padding: 4px; border: 1px solid transparent; transition: border 0.2s; }
+    .draggable-item:hover { border: 1px dashed rgba(255,255,255,0.5); }
+    .draggable-item:active { cursor: grabbing; border: 1px dashed #fff; }
+    .draggable-item img { width: 100%; height: auto; display: block; pointer-events: none; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+    .resize-handle { position: absolute; right: -6px; bottom: -6px; width: 16px; height: 16px; background: #fff; border: 3px solid var(--primary); border-radius: 50%; cursor: nwse-resize; z-index: 15; box-shadow: 0 2px 5px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.2s; }
+    .draggable-item:hover .resize-handle { opacity: 1; }
   </style>
 </head>
 <body>
@@ -131,11 +128,11 @@
     </div>
     <ul class="nav-menu">
       <li class="nav-item active" onclick="switchTab('builder', this)">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
         웹 리포트 빌더
       </li>
       <li class="nav-item" onclick="switchTab('manual', this)">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
         스프레드시트 매뉴얼
       </li>
     </ul>
@@ -143,7 +140,6 @@
 
   <!-- Main Content -->
   <main class="main-content">
-    
     <!-- TAB 1: Builder -->
     <div id="tab-builder" class="tab-content active" style="padding:0;">
       <div class="builder-container">
@@ -223,7 +219,7 @@
             <p style="font-size: 13px; color:var(--text-muted); margin: -12px 0 16px 0;">우측 비주얼 에디터에서 이미지를 직접 드래그하면 수치가 자동 반영됩니다.</p>
             <div class="card" style="padding: 16px 20px;">
               <div class="input-group" style="padding-bottom: 16px; border-bottom: 1px solid var(--border);">
-                <label>메인 캐릭터 (기존 우측 하단)</label>
+                <label>메인 캐릭터 (기존 우측 하단 킹)</label>
                 <input type="text" id="c_main_url" value="https://i.imgur.com/DWUTa3Y.png" style="margin-bottom: 10px;">
                 <div class="grid-3">
                   <div><label style="font-size:11px; color:var(--text-muted);">크기(vw)</label><input type="number" id="c_main_w" value="50"></div>
@@ -395,7 +391,7 @@
     </div>
   </main>
 
-  <!-- 숨겨진 원본 템플릿 -->
+  <!-- 숨겨진 원본 템플릿 (압축 해제 및 안정화 완료) -->
   <textarea id="raw-template" style="display:none;">
 <!DOCTYPE html>
 <html lang="ko">
@@ -404,6 +400,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>{{PAGE_TITLE}}</title>
   
+  <script>
+    // 에러 발생 시 무한 로딩을 방지하고 화면에 원인을 출력하는 방어 코드
+    window.onerror = function(message, source, lineno, colno, error) {
+      const msgText = document.getElementById('loading-msg-text');
+      const overlay = document.getElementById('loading-overlay');
+      if (msgText && overlay) {
+        msgText.innerHTML = `
+          <div style="background:#fee2e2; border:1px solid #ef4444; padding:24px; border-radius:12px; color:#991b1b; max-width:450px; text-align:left; margin-top:20px;">
+            <h3 style="margin:0 0 12px 0; color:#b91c1c; font-size:18px;">⚠️ 스크립트 오류 발생</h3>
+            <p style="margin:0 0 12px 0; font-size:14px; font-weight:600;">에러: ${message}</p>
+            <p style="margin:0 0 12px 0; font-size:12px;">위치: ${lineno}번째 줄</p>
+            <button onclick="document.getElementById('loading-overlay').classList.add('hide');" style="padding:10px 20px; background:#ef4444; color:#fff; border:none; border-radius:8px; cursor:pointer;">오류 무시하고 강제로 닫기</button>
+          </div>`;
+      }
+    };
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -412,6 +425,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  
   <style>
     :root {
       --bg: #0f172a; --cr-blue: #3b82f6; --cr-navy: #1e3a8a; --cr-gold: #fbbf24;
@@ -532,10 +546,8 @@
     .type-badge { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 900; display: inline-block; }
     .type-badge.vod { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
     .type-badge.shorts { background: #fef2f2; color: #ef4444; border: 1px solid #fecaca; }
-    
     .creator-badge { padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 800; display: inline-block; background: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
 
-    /* Top 3 Videos Custom Table Layout */
     .top-3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .top-video-card { border: 1px solid #cbd5e1; border-radius: 12px; overflow: hidden; background: #fff; display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
     .top-video-thumb-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: #0f172a; display: flex; justify-content: center; align-items: center; overflow: hidden; border-bottom: 1px solid #cbd5e1;}
@@ -552,11 +564,9 @@
     .tv-link { color: #2563eb; text-decoration: underline; font-weight: 700; font-size: 13px; word-break: break-all;}
     .tv-link:hover { color: #1d4ed8; }
 
-    /* Tables */
     .table-shell { position:relative; z-index:30; border-radius:var(--radius-2xl); overflow:hidden; border:1px solid #e2e8f0; background:#ffffff; box-shadow:0 10px 30px rgba(15,23,42,0.05); width: 100%; }
     .table-scroll { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; display: block; }
     .table-scroll table { width:100%; border-collapse:collapse; min-width: 640px; }
-    
     th, td { padding:16px 14px; border-bottom:1px solid #e2e8f0; vertical-align:middle; text-align:left; font-size:14px; white-space: nowrap; color:#334155;}
     th { position:sticky; top:0; z-index:2; background:#f8fafc; color:#64748b; font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.06em; }
     .table-actions { display:flex; justify-content:center; margin:14px 0 28px; width: 100%; }
@@ -739,7 +749,6 @@
       <p class="hero-desc">공식 지표 및 주요 여론을 요약한 대시보드입니다.</p>
       
       <div class="hero-pills">
-        <span class="hero-pill" id="hero-subs">구독자 -명</span>
         <span class="hero-pill" id="hero-dau">평균 DAU -명</span>
         <span class="hero-pill" id="hero-views">월간 조회수 -회</span>
         <span class="hero-pill" id="hero-interactions">월간 인터랙션 -건</span>
@@ -1153,7 +1162,10 @@
             <h2 class="section-title title-font">주요 여론 및 이슈 요약</h2>
           </div>
         </div>
-        <div class="issue-grid" id="issuesList" style="position:relative; z-index:2;"></div>
+
+        <div class="issue-grid" id="issuesList" style="position:relative; z-index:2;">
+          <!-- JS 렌더링 -->
+        </div>
         <div id="no-issues-msg" style="position:relative; z-index:2; text-align:center; padding: 60px; color:#64748b; font-size:18px; font-weight:800; background:#ffffff; border-radius:var(--radius-2xl); border:1px solid #e2e8f0;">
           해당 월의 주요 이슈 데이터가 없습니다.
         </div>
@@ -1171,47 +1183,76 @@
     let currentSelectedMonth = ""; let showAllVideos = false; let showAllCreatorVideos = false;
 
     async function exportHTML() {
-      if (!currentSelectedMonth) { alert("데이터가 로드되지 않았습니다."); return; }
+      if (!currentSelectedMonth) { 
+        alert("데이터가 로드되지 않았습니다."); 
+        return; 
+      }
       const overlay = document.getElementById('loading-overlay');
       const originalText = overlay.querySelector('.loading-text').textContent;
       overlay.querySelector('.loading-text').textContent = "HTML 생성 중...";
       overlay.classList.remove('hide');
+      
       await new Promise(resolve => setTimeout(resolve, 300));
 
       const clonedDoc = document.documentElement.cloneNode(true);
       const originalCanvases = document.querySelectorAll('canvas');
       const clonedCanvases = clonedDoc.querySelectorAll('canvas');
+      
       for (let i = 0; i < originalCanvases.length; i++) {
         const img = document.createElement('img');
         img.src = originalCanvases[i].toDataURL('image/png');
-        img.style.width = '100%'; img.style.height = '100%'; img.style.objectFit = 'contain';
+        img.style.width = '100%'; 
+        img.style.height = '100%'; 
+        img.style.objectFit = 'contain';
         clonedCanvases[i].parentNode.replaceChild(img, clonedCanvases[i]);
       }
 
-      const scripts = clonedDoc.querySelectorAll('script'); scripts.forEach(script => script.remove());
-      const clonedOverlay = clonedDoc.querySelector('#loading-overlay'); if (clonedOverlay) clonedOverlay.remove();
-      const exportBtns = clonedDoc.querySelectorAll('.pdf-btn'); exportBtns.forEach(btn => btn.remove());
+      const scripts = clonedDoc.querySelectorAll('script'); 
+      scripts.forEach(script => script.remove());
+      
+      const clonedOverlay = clonedDoc.querySelector('#loading-overlay'); 
+      if (clonedOverlay) clonedOverlay.remove();
+      
+      const exportBtns = clonedDoc.querySelectorAll('.pdf-btn'); 
+      exportBtns.forEach(btn => btn.remove());
 
       const monthSelector = clonedDoc.querySelector('.month-selector');
       if (monthSelector) {
-        const span = document.createElement('span'); span.style.color = '#60a5fa'; span.style.fontWeight = '900'; span.style.fontSize = '14px';
+        const span = document.createElement('span'); 
+        span.style.color = '#60a5fa'; 
+        span.style.fontWeight = '900'; 
+        span.style.fontSize = '14px';
         span.textContent = currentSelectedMonth.split('.')[0] + '년 ' + currentSelectedMonth.split('.')[1] + '월 리포트';
         monthSelector.parentNode.replaceChild(span, monthSelector);
       }
 
       const reveals = clonedDoc.querySelectorAll('.reveal');
-      reveals.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; el.style.transition = 'none'; });
+      reveals.forEach(el => { 
+        el.style.opacity = '1'; 
+        el.style.transform = 'none'; 
+        el.style.transition = 'none'; 
+      });
 
       const htmlContent = "<!DOCTYPE html>\n" + clonedDoc.outerHTML;
       const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = `클래시로얄_월간리포트_${currentSelectedMonth}.html`;
-      document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
-      overlay.querySelector('.loading-text').textContent = originalText; overlay.classList.add('hide');
+      const a = document.createElement('a'); 
+      a.href = url; 
+      a.download = `클래시로얄_월간리포트_${currentSelectedMonth}.html`;
+      document.body.appendChild(a); 
+      a.click(); 
+      document.body.removeChild(a); 
+      URL.revokeObjectURL(url);
+      
+      overlay.querySelector('.loading-text').textContent = originalText; 
+      overlay.classList.add('hide');
     }
 
     async function exportPDF() {
-      if (!currentSelectedMonth) { alert("데이터가 로드되지 않았습니다."); return; }
+      if (!currentSelectedMonth) { 
+        alert("데이터가 로드되지 않았습니다."); 
+        return; 
+      }
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF('l', 'mm', 'a4'); 
       
@@ -1229,8 +1270,14 @@
       sectionsToCapture.push({ id: 'creator-section-1', bg: '#f8fafc' });
       sectionsToCapture.push({ id: 'creator-section-2', bg: '#f8fafc' });
       sectionsToCapture.push({ id: 'creator-section-3', bg: '#f8fafc' });
-      if (document.getElementById('instagram-section') && document.getElementById('instagram-section').style.display !== 'none') { sectionsToCapture.push({ id: 'instagram-section', bg: '#f8fafc' }); sectionsToCapture.push({ id: 'instagram-section-2', bg: '#f8fafc' }); }
-      if (document.getElementById('tiktok-section') && document.getElementById('tiktok-section').style.display !== 'none') { sectionsToCapture.push({ id: 'tiktok-section', bg: '#f8fafc' }); sectionsToCapture.push({ id: 'tiktok-section-2', bg: '#f8fafc' }); }
+      if (document.getElementById('instagram-section') && document.getElementById('instagram-section').style.display !== 'none') { 
+        sectionsToCapture.push({ id: 'instagram-section', bg: '#f8fafc' }); 
+        sectionsToCapture.push({ id: 'instagram-section-2', bg: '#f8fafc' }); 
+      }
+      if (document.getElementById('tiktok-section') && document.getElementById('tiktok-section').style.display !== 'none') { 
+        sectionsToCapture.push({ id: 'tiktok-section', bg: '#f8fafc' }); 
+        sectionsToCapture.push({ id: 'tiktok-section-2', bg: '#f8fafc' }); 
+      }
       sectionsToCapture.push({ id: 'issues-section', bg: '#f8fafc' });
       /* SECTION_MAP_END */
 
@@ -1238,67 +1285,171 @@
       const originalText = overlay.querySelector('.loading-text').textContent;
       overlay.querySelector('.loading-text').textContent = "PDF 생성 중... (10~15초 소요)";
       overlay.classList.remove('hide');
+      
       document.body.classList.add('pdf-export-mode');
       document.getElementById('top-nav').style.display = 'none';
-      if(document.getElementById('quick-nav')) document.getElementById('quick-nav').style.display = 'none';
-      const scrollDown = document.querySelector('.scroll-down'); if (scrollDown) scrollDown.style.display = 'none';
-      const tableActions = document.querySelectorAll('.table-actions'); tableActions.forEach(el => el.style.display = 'none');
-      const originalScroll = window.scrollY; window.scrollTo(0, 0);
+      if(document.getElementById('quick-nav')) {
+        document.getElementById('quick-nav').style.display = 'none';
+      }
+      
+      const scrollDown = document.querySelector('.scroll-down'); 
+      if (scrollDown) scrollDown.style.display = 'none';
+      
+      const tableActions = document.querySelectorAll('.table-actions'); 
+      tableActions.forEach(el => el.style.display = 'none');
+      
+      const originalScroll = window.scrollY; 
+      window.scrollTo(0, 0);
       
       const originalStyles = [];
       sectionsToCapture.forEach(sec => {
         const el = document.getElementById(sec.id);
         if (el) {
-          originalStyles.push({ el: el, w: el.style.width, h: el.style.height, minH: el.style.minHeight, display: el.style.display, flexDir: el.style.flexDirection, justify: el.style.justifyContent, padding: el.style.padding, margin: el.style.margin, boxSizing: el.style.boxSizing, overflow: el.style.overflow });
-          el.style.width = '1300px'; el.style.height = '900px'; el.style.minHeight = '900px'; el.style.boxSizing = 'border-box'; el.style.overflow = 'hidden'; 
-          if (sec.id !== 'hero') { el.style.display = 'flex'; el.style.flexDirection = 'column'; el.style.justifyContent = 'center'; el.style.margin = '0 auto'; } 
-          else { el.style.width = '1440px'; el.style.height = '1018px'; el.style.minHeight = '1018px'; }
+          originalStyles.push({ 
+            el: el, 
+            w: el.style.width, 
+            h: el.style.height, 
+            minH: el.style.minHeight, 
+            display: el.style.display, 
+            flexDir: el.style.flexDirection, 
+            justify: el.style.justifyContent, 
+            padding: el.style.padding, 
+            margin: el.style.margin, 
+            boxSizing: el.style.boxSizing, 
+            overflow: el.style.overflow 
+          });
+          
+          el.style.width = '1300px'; 
+          el.style.height = '900px'; 
+          el.style.minHeight = '900px'; 
+          el.style.boxSizing = 'border-box'; 
+          el.style.overflow = 'hidden'; 
+          
+          if (sec.id !== 'hero') { 
+            el.style.display = 'flex'; 
+            el.style.flexDirection = 'column'; 
+            el.style.justifyContent = 'center'; 
+            el.style.margin = '0 auto'; 
+          } else { 
+            el.style.width = '1440px'; 
+            el.style.height = '1018px'; 
+            el.style.minHeight = '1018px'; 
+          }
         }
       });
-      document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; el.style.transition = 'none'; });
+      
+      document.querySelectorAll('.reveal').forEach(el => { 
+        el.style.opacity = '1'; 
+        el.style.transform = 'none'; 
+        el.style.transition = 'none'; 
+      });
 
       await new Promise(resolve => setTimeout(resolve, 500));
 
       for (let i = 0; i < sectionsToCapture.length; i++) {
         const el = document.getElementById(sectionsToCapture[i].id);
         if (!el) continue;
-        const canvas = await html2canvas(el, { scale: 2, useCORS: true, backgroundColor: sectionsToCapture[i].bg, windowWidth: 1440 });
+        
+        const canvas = await html2canvas(el, { 
+          scale: 2, 
+          useCORS: true, 
+          backgroundColor: sectionsToCapture[i].bg, 
+          windowWidth: 1440 
+        });
+        
         const imgData = canvas.toDataURL('image/jpeg', 0.95);
-        const pdfW = pdf.internal.pageSize.getWidth(); const pdfH = pdf.internal.pageSize.getHeight();
+        const pdfW = pdf.internal.pageSize.getWidth(); 
+        const pdfH = pdf.internal.pageSize.getHeight();
         const imgProps = pdf.getImageProperties(imgData);
-        const margin = 10; const contentW = pdfW - margin * 2; const contentH = pdfH - margin * 2;
-        let drawW = contentW; let drawH = (imgProps.height * drawW) / imgProps.width;
-        if (drawH > contentH) { drawH = contentH; drawW = (imgProps.width * drawH) / imgProps.height; }
-        const x = (pdfW - drawW) / 2; const y = (pdfH - drawH) / 2;
+        
+        const margin = 10; 
+        const contentW = pdfW - margin * 2; 
+        const contentH = pdfH - margin * 2;
+        
+        let drawW = contentW; 
+        let drawH = (imgProps.height * drawW) / imgProps.width;
+        
+        if (drawH > contentH) { 
+          drawH = contentH; 
+          drawW = (imgProps.width * drawH) / imgProps.height; 
+        }
+        
+        const x = (pdfW - drawW) / 2; 
+        const y = (pdfH - drawH) / 2;
+        
         if (i > 0) pdf.addPage();
-        pdf.setFillColor(sectionsToCapture[i].bg); pdf.rect(0, 0, pdfW, pdfH, 'F'); pdf.addImage(imgData, 'JPEG', x, y, drawW, drawH);
+        
+        pdf.setFillColor(sectionsToCapture[i].bg); 
+        pdf.rect(0, 0, pdfW, pdfH, 'F'); 
+        pdf.addImage(imgData, 'JPEG', x, y, drawW, drawH);
       }
 
       pdf.save(`리포트_${currentSelectedMonth}.pdf`);
 
       document.body.classList.remove('pdf-export-mode');
       document.getElementById('top-nav').style.display = '';
-      if(document.getElementById('quick-nav')) document.getElementById('quick-nav').style.display = 'flex';
+      if(document.getElementById('quick-nav')) {
+        document.getElementById('quick-nav').style.display = 'flex';
+      }
       if (scrollDown) scrollDown.style.display = '';
       tableActions.forEach(el => el.style.display = '');
       
-      originalStyles.forEach(item => { item.el.style.width = item.w; item.el.style.height = item.h; item.el.style.minHeight = item.minH; item.el.style.display = item.display; item.el.style.flexDirection = item.flexDir; item.el.style.justifyContent = item.justify; item.el.style.padding = item.padding; item.el.style.margin = item.margin; item.el.style.boxSizing = item.boxSizing; item.el.style.overflow = item.overflow; });
-      document.querySelectorAll('.reveal').forEach(el => { el.style.transition = ''; });
+      originalStyles.forEach(item => { 
+        item.el.style.width = item.w; 
+        item.el.style.height = item.h; 
+        item.el.style.minHeight = item.minH; 
+        item.el.style.display = item.display; 
+        item.el.style.flexDirection = item.flexDir; 
+        item.el.style.justifyContent = item.justify; 
+        item.el.style.padding = item.padding; 
+        item.el.style.margin = item.margin; 
+        item.el.style.boxSizing = item.boxSizing; 
+        item.el.style.overflow = item.overflow; 
+      });
+      
+      document.querySelectorAll('.reveal').forEach(el => { 
+        el.style.transition = ''; 
+      });
+      
       window.scrollTo(0, originalScroll);
-      overlay.querySelector('.loading-text').textContent = originalText; overlay.classList.add('hide');
+      overlay.querySelector('.loading-text').textContent = originalText; 
+      overlay.classList.add('hide');
     }
 
-    function setText(id, text) { const el = document.getElementById(id); if (el) el.textContent = text; }
-    function formatHero(val, unit) { if (val === undefined || val === null || val === 0 || isNaN(val) || val === '-' || val === '0') return '-'; return formatNumber(val) + unit; }
-    function safeNumber(val) { if (typeof val === 'number') return val; if (!val) return 0; return Number(String(val).replace(/,/g, '').replace(/[^0-9.-]+/g,"")) || 0; }
-    function formatNumber(n) { return Number(n || 0).toLocaleString('ko-KR'); }
+    function setText(id, text) { 
+      const el = document.getElementById(id); 
+      if (el) el.textContent = text; 
+    }
+    
+    function formatHero(val, unit) { 
+      if (val === undefined || val === null || val === 0 || isNaN(val) || val === '-' || val === '0') return '-'; 
+      return formatNumber(val) + unit; 
+    }
+    
+    function safeNumber(val) { 
+      if (typeof val === 'number') return val; 
+      if (!val) return 0; 
+      return Number(String(val).replace(/,/g, '').replace(/[^0-9.-]+/g,"")) || 0; 
+    }
+    
+    function formatNumber(n) { 
+      return Number(n || 0).toLocaleString('ko-KR'); 
+    }
+    
     function fixTimeFormat(str) {
-      if (!str || str === '0:00') return '0:00'; const parts = String(str).split(':');
+      if (!str || str === '0:00') return '0:00'; 
+      const parts = String(str).split(':');
       if (parts.length === 2 && parts[1] === '00' && parseInt(parts[0]) > 0 && parseInt(parts[0]) < 60) return `0:${parts[0].padStart(2, '0')}`;
       if (parts.length === 3 && parseInt(parts[0]) === 0) return `${parseInt(parts[1])}:${parts[2].padStart(2, '0')}`;
       return str;
     }
-    function getYoutubeVideoId(url) { const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/; const match = url.match(regExp); return (match && match[2].length === 11) ? match[2] : null; }
+    
+    function getYoutubeVideoId(url) { 
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/; 
+      const match = url.match(regExp); 
+      return (match && match[2].length === 11) ? match[2] : null; 
+    }
+    
     function formatDiffHTML(cur, prev) {
       if (!prev && prev !== 0) return `<span class="creator-diff-span c-diff-none">(-)</span>`;
       const diff = cur - prev;
@@ -1306,25 +1457,48 @@
       if (diff < 0) return `<span class="creator-diff-span c-diff-down">(▼${formatNumber(Math.abs(diff))})</span>`;
       return `<span class="creator-diff-span c-diff-none">(-)</span>`;
     }
+    
     function renderDiff(current, prev, elementId) {
-      const el = document.getElementById(elementId); if (!el) return;
-      if (prev === undefined || prev === null) { el.innerHTML = '<span class="metric-sub" style="color:#64748b;">이전 데이터 없음</span>'; return; }
+      const el = document.getElementById(elementId); 
+      if (!el) return;
+      if (prev === undefined || prev === null) { 
+        el.innerHTML = '<span class="metric-sub" style="color:#64748b;">이전 데이터 없음</span>'; 
+        return; 
+      }
       const diff = current - prev;
-      if (diff > 0) el.innerHTML = `<span class="kpi-diff diff-up">전월 대비 ▲ ${formatNumber(diff)}</span>`;
-      else if (diff < 0) el.innerHTML = `<span class="kpi-diff diff-down">전월 대비 ▼ ${formatNumber(Math.abs(diff))}</span>`;
-      else el.innerHTML = `<span class="kpi-diff diff-none">전월 대비 변동 없음</span>`;
+      if (diff > 0) {
+        el.innerHTML = `<span class="kpi-diff diff-up">전월 대비 ▲ ${formatNumber(diff)}</span>`;
+      } else if (diff < 0) {
+        el.innerHTML = `<span class="kpi-diff diff-down">전월 대비 ▼ ${formatNumber(Math.abs(diff))}</span>`;
+      } else {
+        el.innerHTML = `<span class="kpi-diff diff-none">전월 대비 변동 없음</span>`;
+      }
     }
+    
     function countUp(element, target) {
-      let start = 0; const duration = 1500; const startTime = performance.now();
+      let start = 0; 
+      const duration = 1500; 
+      const startTime = performance.now();
       function update(now) {
         const progress = Math.min((now - startTime) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         element.textContent = formatNumber(Math.floor(start + (target - start) * eased));
-        if (progress < 1) requestAnimationFrame(update); else element.textContent = formatNumber(target);
+        if (progress < 1) {
+          requestAnimationFrame(update); 
+        } else {
+          element.textContent = formatNumber(target);
+        }
       }
       requestAnimationFrame(update);
     }
-    function setCounter(id, val) { const el = document.getElementById(id); if(el) { el.dataset.target = val; countUp(el, val); } }
+    
+    function setCounter(id, val) { 
+      const el = document.getElementById(id); 
+      if(el) { 
+        el.dataset.target = val; 
+        countUp(el, val); 
+      } 
+    }
 
     async function loadData() {
       const overlay = document.getElementById('loading-overlay');
@@ -1352,7 +1526,9 @@
           if (logo) logo.style.display = 'none';
           
           let errorReason = "서버 응답을 받는 데 실패했습니다.";
-          if (error.name === "AbortError" || (error.message && error.message.includes("aborted"))) errorReason = "서버 응답 시간이 초과되었습니다 (데이터 처리량 과다).";
+          if (error.name === "AbortError" || (error.message && error.message.includes("aborted"))) {
+            errorReason = "서버 응답 시간이 초과되었습니다 (데이터 처리량 과다).";
+          }
           
           if (msgText) {
             msgText.innerHTML = `
@@ -1398,25 +1574,59 @@
       
       window.addEventListener('scroll', () => {
         let current = '';
-        document.querySelectorAll('section[id]').forEach(sec => { if (window.scrollY >= sec.offsetTop - 300) current = sec.id; });
+        document.querySelectorAll('section[id]').forEach(sec => { 
+          if (window.scrollY >= sec.offsetTop - 300) {
+            current = sec.id; 
+          }
+        });
+        
         if (current.startsWith('cafe-section')) current = 'cafe-section';
         if (current.startsWith('youtube-section')) current = 'youtube-section';
         if (current.startsWith('creator-section')) current = 'creator-section-1';
         if (current.startsWith('instagram-section')) current = 'instagram-section';
         if (current.startsWith('tiktok-section')) current = 'tiktok-section';
+
         document.querySelectorAll('.quick-link').forEach(link => {
           const dot = link.querySelector('.nav-dot');
-          if (link && dot) { if (link.dataset.target === current) dot.classList.add('active'); else dot.classList.remove('active'); }
+          if (link && dot) {
+            if (link.dataset.target === current) {
+              dot.classList.add('active'); 
+            } else {
+              dot.classList.remove('active');
+            }
+          }
         });
       });
 
-      document.getElementById('videoMoreBtn')?.addEventListener('click', () => { showAllVideos = !showAllVideos; renderVideoTableOnly(currentSelectedMonth); });
-      document.getElementById('creatorVideoMoreBtn')?.addEventListener('click', () => { showAllCreatorVideos = !showAllCreatorVideos; renderCreatorSection(currentSelectedMonth); });
+      const videoMoreBtn = document.getElementById('videoMoreBtn');
+      if(videoMoreBtn) {
+        videoMoreBtn.addEventListener('click', () => { 
+          showAllVideos = !showAllVideos; 
+          renderVideoTableOnly(currentSelectedMonth); 
+        });
+      }
+      
+      const creatorVideoMoreBtn = document.getElementById('creatorVideoMoreBtn');
+      if(creatorVideoMoreBtn) {
+        creatorVideoMoreBtn.addEventListener('click', () => { 
+          showAllCreatorVideos = !showAllCreatorVideos; 
+          renderCreatorSection(currentSelectedMonth); 
+        });
+      }
 
       setTimeout(() => {
-        const qnav = document.getElementById('quick-nav'); if(qnav) qnav.classList.add('show');
-        const fx = document.getElementById('screen-fx'); if (fx) fx.classList.add('play');
-        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+        const qnav = document.getElementById('quick-nav');
+        if(qnav) qnav.classList.add('show');
+        
+        const fx = document.getElementById('screen-fx');
+        if (fx) fx.classList.add('play');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(e => { 
+            if(e.isIntersecting) e.target.classList.add('visible'); 
+          });
+        }, { threshold: 0.1 });
+        
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
       }, 500);
     }
@@ -1425,23 +1635,36 @@
       const select = document.getElementById('month-selector');
       if (!select) return;
       select.innerHTML = '';
+      
       const months = globalData.months || [];
-      if (months.length === 0) { 
-        select.innerHTML = '<option>데이터 없음</option>'; 
-        const kicker = document.getElementById('hero-date-kicker'); if(kicker) kicker.textContent = '데이터가 없습니다.';
-        return; 
+      if (months.length === 0) {
+        select.innerHTML = '<option>데이터 없음</option>';
+        const kicker = document.getElementById('hero-date-kicker');
+        if(kicker) kicker.textContent = '데이터가 없습니다.';
+        return;
       }
+
       months.forEach(month => {
         const option = document.createElement('option');
-        option.value = month; option.textContent = `${month.split('.')[0]}년 ${month.split('.')[1]}월 리포트`;
+        option.value = month;
+        option.textContent = `${month.split('.')[0]}년 ${month.split('.')[1]}월 리포트`;
         select.appendChild(option);
       });
+
       select.addEventListener('change', (e) => {
-        currentSelectedMonth = e.target.value; showAllVideos = false; showAllCreatorVideos = false;
-        if(document.getElementById('videoMoreBtn')) document.getElementById('videoMoreBtn').textContent = '더보기';
-        if(document.getElementById('creatorVideoMoreBtn')) document.getElementById('creatorVideoMoreBtn').textContent = '더보기';
+        currentSelectedMonth = e.target.value;
+        showAllVideos = false;
+        showAllCreatorVideos = false;
+        
+        const vBtn = document.getElementById('videoMoreBtn');
+        if(vBtn) vBtn.textContent = '더보기';
+        
+        const cvBtn = document.getElementById('creatorVideoMoreBtn');
+        if(cvBtn) cvBtn.textContent = '더보기';
+        
         renderDashboard(currentSelectedMonth);
       });
+
       currentSelectedMonth = months[0];
       renderDashboard(currentSelectedMonth);
     }
@@ -1472,57 +1695,77 @@
 
       /* SECTION_CALL_CAFE */
       if(document.getElementById('cafe-visits')) {
-        setCounter('cafe-visits', safeNumber(cafeData.visits)); setCounter('cafe-posts', safeNumber(cafeData.posts));
-        setCounter('cafe-comments', safeNumber(cafeData.comments)); setCounter('cafe-newusers', safeNumber(cafeData.newUsers));
+        setCounter('cafe-visits', safeNumber(cafeData.visits));
+        setCounter('cafe-posts', safeNumber(cafeData.posts));
+        setCounter('cafe-comments', safeNumber(cafeData.comments));
+        setCounter('cafe-newusers', safeNumber(cafeData.newUsers));
+        
         renderDiff(safeNumber(cafeData.visits), prevCafe ? safeNumber(prevCafe.visits) : null, 'diff-cafe-visits');
         renderDiff(safeNumber(cafeData.posts), prevCafe ? safeNumber(prevCafe.posts) : null, 'diff-cafe-posts');
         renderDiff(safeNumber(cafeData.comments), prevCafe ? safeNumber(prevCafe.comments) : null, 'diff-cafe-comments');
         renderDiff(safeNumber(cafeData.newUsers), prevCafe ? safeNumber(prevCafe.newUsers) : null, 'diff-cafe-newusers');
+        
         renderCafeChart(cafeData, prevCafe, month, prevMonth);
       }
       /* /SECTION_CALL_CAFE */
 
       /* SECTION_CALL_YOUTUBE */
       if(document.getElementById('yt-v-views')) {
-        setCounter('yt-v-views', safeNumber(ytData.vViews)); setText('yt-v-ctr', `클릭률: ${ytData.vCtr || '0%'}`);
-        setText('yt-v-avd', fixTimeFormat(ytData.vDuration)); setText('yt-v-imp', `노출수: ${formatNumber(safeNumber(ytData.vImp))}`);
-        setCounter('yt-s-views', safeNumber(ytData.sViews)); setText('yt-s-active', `유효 조회수: ${formatNumber(safeNumber(ytData.sActive))}`);
-        setCounter('yt-s-likes', safeNumber(ytData.sLikes)); setText('yt-s-subs', `구독자 유입: ${formatNumber(safeNumber(ytData.sSubs))}`);
-        setCounter('yt-c-imp', safeNumber(ytData.cImp)); setCounter('yt-c-likes', safeNumber(ytData.cLikes)); setCounter('yt-c-subs', safeNumber(ytData.cSubs));
+        setCounter('yt-v-views', safeNumber(ytData.vViews));
+        setText('yt-v-ctr', `클릭률: ${ytData.vCtr || '0%'}`);
+        setText('yt-v-avd', fixTimeFormat(ytData.vDuration));
+        setText('yt-v-imp', `노출수: ${formatNumber(safeNumber(ytData.vImp))}`);
+
+        setCounter('yt-s-views', safeNumber(ytData.sViews));
+        setText('yt-s-active', `유효 조회수: ${formatNumber(safeNumber(ytData.sActive))}`);
+        setCounter('yt-s-likes', safeNumber(ytData.sLikes));
+        setText('yt-s-subs', `구독자 유입: ${formatNumber(safeNumber(ytData.sSubs))}`);
+
+        setCounter('yt-c-imp', safeNumber(ytData.cImp));
+        setCounter('yt-c-likes', safeNumber(ytData.cLikes));
+        setCounter('yt-c-subs', safeNumber(ytData.cSubs));
+
         renderDiff(safeNumber(ytData.vViews), prevYt ? safeNumber(prevYt.vViews) : null, 'diff-yt-v-views');
         renderDiff(safeNumber(ytData.sViews), prevYt ? safeNumber(prevYt.sViews) : null, 'diff-yt-s-views');
         renderDiff(safeNumber(ytData.sLikes), prevYt ? safeNumber(prevYt.sLikes) : null, 'diff-yt-s-likes');
         renderDiff(safeNumber(ytData.cImp), prevYt ? safeNumber(prevYt.cImp) : null, 'diff-yt-c-imp');
         renderDiff(safeNumber(ytData.cLikes), prevYt ? safeNumber(prevYt.cLikes) : null, 'diff-yt-c-likes');
+
         renderYTChart(ytData, prevYt, month, prevMonth);
         renderVideoSection(month);
         renderTrendLineChart(month);
       }
       /* /SECTION_CALL_YOUTUBE */
-      
+
+      // Hero Pills 업데이트 (데이터 누락 시 0이 아니라 - 기호 적용)
+      const monthVideos = (globalData.videos || []).filter(v => v.month === month);
       const ytMetrics = globalData.metrics ? globalData.metrics[month] : null;
+      
       let subs = '-';
       let totalViews = safeNumber(ytData.vViews) + safeNumber(ytData.sViews);
-      let totalUploads = 0;
+      let totalUploads = monthVideos.length;
       
-      const monthVideos = (globalData.videos || []).filter(v => v.month === month);
-      if (totalViews === 0 && monthVideos.length > 0) totalViews = monthVideos.reduce((sum, v) => sum + safeNumber(v.views), 0);
-      totalUploads = monthVideos.length;
+      if (totalViews === 0 && monthVideos.length > 0) {
+        totalViews = monthVideos.reduce((sum, v) => sum + safeNumber(v.views), 0);
+      }
       
       if (ytMetrics) {
-        if(ytMetrics.subs) subs = safeNumber(ytMetrics.subs);
         if(ytMetrics.totalViews) totalViews = safeNumber(ytMetrics.totalViews);
         if(ytMetrics.totalUploads) totalUploads = safeNumber(ytMetrics.totalUploads);
       }
 
       let autoLikes = 0, autoComments = 0;
-      monthVideos.forEach(v => { autoLikes += safeNumber(v.likes); autoComments += safeNumber(v.comments); });
+      monthVideos.forEach(v => {
+         autoLikes += safeNumber(v.likes);
+         autoComments += safeNumber(v.comments);
+      });
       let totalInteractions = autoLikes + autoComments + safeNumber(ytData.cLikes);
       
-      setText('hero-subs', `구독자 ${formatHero(subs, '명')}`); setText('hero-views', `월간 조회수 ${formatHero(totalViews, '회')}`);
-      setText('hero-dau', `평균 DAU ${formatHero(safeNumber(sensorData.dau), '명')}`); setText('hero-uploads', `월간 업로드 ${formatHero(totalUploads, '건')}`);
+      setText('hero-views', `월간 조회수 ${formatHero(totalViews, '회')}`);
+      setText('hero-dau', `평균 DAU ${formatHero(safeNumber(sensorData.dau), '명')}`);
+      setText('hero-uploads', `월간 업로드 ${formatHero(totalUploads, '건')}`);
       setText('hero-interactions', `월간 인터랙션 ${formatHero(totalInteractions, '건')}`);
-      
+
       /* SECTION_CALL_CREATOR */
       renderCreatorSection(month, prevMonth);
       renderCreatorTrendChart(month);
@@ -1530,43 +1773,93 @@
 
       /* SECTION_CALL_INSTA */
       const instaData = (globalData.instagram || []).filter(v => v.month === month);
-      const instaSection = document.getElementById('instagram-section'); const instaSection2 = document.getElementById('instagram-section-2');
-      const instaNav = document.getElementById('nav-instagram'); const instaQuickNav = document.getElementById('quick-nav-instagram');
+      const instaSection = document.getElementById('instagram-section');
+      const instaSection2 = document.getElementById('instagram-section-2');
+      const instaNav = document.getElementById('nav-instagram');
+      const instaQuickNav = document.getElementById('quick-nav-instagram');
+      
       if (instaData.length > 0) {
-        if(instaSection) instaSection.style.display = 'block'; if(instaSection2) instaSection2.style.display = 'block';
-        if(instaNav) instaNav.style.display = 'inline-block'; if(instaQuickNav) instaQuickNav.style.display = 'flex';
-        let iViews = 0, iLikes = 0, iComms = 0; instaData.forEach(v => { iViews += safeNumber(v.views); iLikes += safeNumber(v.likes); iComms += safeNumber(v.comments); });
-        setCounter('insta-total-uploads', instaData.length); setCounter('insta-total-views', iViews); setCounter('insta-total-likes', iLikes); setCounter('insta-total-comments', iComms);
-        renderSnsTable('instagramTableBody', instaData);
+        if(instaSection) instaSection.style.display = 'block';
+        if(instaSection2) instaSection2.style.display = 'block';
+        if(instaNav) instaNav.style.display = 'inline-block';
+        if(instaQuickNav) instaQuickNav.style.display = 'flex';
+        
+        let iViews = 0, iLikes = 0, iComms = 0;
+        instaData.forEach(v => { 
+          iViews += safeNumber(v.views); 
+          iLikes += safeNumber(v.likes); 
+          iComms += safeNumber(v.comments); 
+        });
+        
+        if(document.getElementById('insta-total-uploads')) {
+          setCounter('insta-total-uploads', instaData.length);
+          setCounter('insta-total-views', iViews);
+          setCounter('insta-total-likes', iLikes);
+          setCounter('insta-total-comments', iComms);
+          renderSnsTable('instagramTableBody', instaData);
+        }
       } else {
-        if(instaSection) instaSection.style.display = 'none'; if(instaSection2) instaSection2.style.display = 'none';
-        if(instaNav) instaNav.style.display = 'none'; if(instaQuickNav) instaQuickNav.style.display = 'none';
+        if(instaSection) instaSection.style.display = 'none';
+        if(instaSection2) instaSection2.style.display = 'none';
+        if(instaNav) instaNav.style.display = 'none';
+        if(instaQuickNav) instaQuickNav.style.display = 'none';
       }
       /* /SECTION_CALL_INSTA */
 
       /* SECTION_CALL_TIKTOK */
       const tiktokData = (globalData.tiktok || []).filter(v => v.month === month);
-      const tiktokSection = document.getElementById('tiktok-section'); const tiktokSection2 = document.getElementById('tiktok-section-2');
-      const tiktokNav = document.getElementById('nav-tiktok'); const tiktokQuickNav = document.getElementById('quick-nav-tiktok');
+      const tiktokSection = document.getElementById('tiktok-section');
+      const tiktokSection2 = document.getElementById('tiktok-section-2');
+      const tiktokNav = document.getElementById('nav-tiktok');
+      const tiktokQuickNav = document.getElementById('quick-nav-tiktok');
+      
       if (tiktokData.length > 0) {
-        if(tiktokSection) tiktokSection.style.display = 'block'; if(tiktokSection2) tiktokSection2.style.display = 'block';
-        if(tiktokNav) tiktokNav.style.display = 'inline-block'; if(tiktokQuickNav) tiktokQuickNav.style.display = 'flex';
-        let tViews = 0, tLikes = 0, tComms = 0; tiktokData.forEach(v => { tViews += safeNumber(v.views); tLikes += safeNumber(v.likes); tComms += safeNumber(v.comments); });
-        setCounter('tiktok-total-uploads', tiktokData.length); setCounter('tiktok-total-views', tViews); setCounter('tiktok-total-likes', tLikes); setCounter('tiktok-total-comments', tComms);
-        renderSnsTable('tiktokTableBody', tiktokData);
+        if(tiktokSection) tiktokSection.style.display = 'block';
+        if(tiktokSection2) tiktokSection2.style.display = 'block';
+        if(tiktokNav) tiktokNav.style.display = 'inline-block';
+        if(tiktokQuickNav) tiktokQuickNav.style.display = 'flex';
+
+        let tViews = 0, tLikes = 0, tComms = 0;
+        tiktokData.forEach(v => { 
+          tViews += safeNumber(v.views); 
+          tLikes += safeNumber(v.likes); 
+          tComms += safeNumber(v.comments); 
+        });
+        
+        if(document.getElementById('tiktok-total-uploads')) {
+          setCounter('tiktok-total-uploads', tiktokData.length);
+          setCounter('tiktok-total-views', tViews);
+          setCounter('tiktok-total-likes', tLikes);
+          setCounter('tiktok-total-comments', tComms);
+          renderSnsTable('tiktokTableBody', tiktokData);
+        }
       } else {
-        if(tiktokSection) tiktokSection.style.display = 'none'; if(tiktokSection2) tiktokSection2.style.display = 'none';
-        if(tiktokNav) tiktokNav.style.display = 'none'; if(tiktokQuickNav) tiktokQuickNav.style.display = 'none';
+        if(tiktokSection) tiktokSection.style.display = 'none';
+        if(tiktokSection2) tiktokSection2.style.display = 'none';
+        if(tiktokNav) tiktokNav.style.display = 'none';
+        if(tiktokQuickNav) tiktokQuickNav.style.display = 'none';
       }
       /* /SECTION_CALL_TIKTOK */
 
       /* SECTION_CALL_ISSUES */
-      const issuesList = document.getElementById('issuesList'); const noIssuesMsg = document.getElementById('no-issues-msg');
-      if (issueData.length > 0 && issuesList) {
-        issuesList.style.display = 'grid'; if (noIssuesMsg) noIssuesMsg.style.display = 'none';
-        issuesList.innerHTML = issueData.map(issue => `<div class="issue-card"><h3 class="issue-topic">${issue.topic}</h3><span class="issue-keyword">${issue.keyword}</span><p class="issue-summary">${issue.summary}</p></div>`).join('');
+      const issuesList = document.getElementById('issuesList');
+      const noIssuesMsg = document.getElementById('no-issues-msg');
+      
+      if (issueData.length > 0) {
+        if (issuesList) {
+          issuesList.style.display = 'grid';
+          issuesList.innerHTML = issueData.map(issue => `
+            <div class="issue-card">
+              <h3 class="issue-topic">${issue.topic}</h3>
+              <span class="issue-keyword">${issue.keyword}</span>
+              <p class="issue-summary">${issue.summary}</p>
+            </div>
+          `).join('');
+        }
+        if (noIssuesMsg) noIssuesMsg.style.display = 'none';
       } else {
-        if (issuesList) issuesList.style.display = 'none'; if (noIssuesMsg) noIssuesMsg.style.display = 'block';
+        if (issuesList) issuesList.style.display = 'none';
+        if (noIssuesMsg) noIssuesMsg.style.display = 'block';
       }
       /* /SECTION_CALL_ISSUES */
     }
@@ -1575,50 +1868,86 @@
       const vBody = document.getElementById(tbodyId);
       if (data.length > 0 && vBody) {
         vBody.innerHTML = data.map((v) => {
-          return `<tr><td style="text-align:center;"><span class="num-font">${v.date}</span></td><td><div class="video-title" style="max-width:400px; -webkit-line-clamp: 3;">${v.content}</div><div class="video-url"><span class="url-text" title="${v.url}">${v.url}</span><a class="url-btn open-btn" href="${v.url}" target="_blank" rel="noopener noreferrer">열기</a><button class="url-btn copy-btn" data-url="${v.url}">복사</button></div></td><td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.views))}</td><td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.likes))}</td><td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.comments))}</td></tr>`;
+          return `
+            <tr>
+              <td style="text-align:center;"><span class="num-font">${v.date}</span></td>
+              <td>
+                <div class="video-title" style="max-width:400px; -webkit-line-clamp: 3;">${v.content}</div>
+                <div class="video-url">
+                  <span class="url-text" title="${v.url}">${v.url}</span>
+                  <a class="url-btn open-btn" href="${v.url}" target="_blank" rel="noopener noreferrer">열기</a>
+                  <button class="url-btn copy-btn" data-url="${v.url}">복사</button>
+                </div>
+              </td>
+              <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.views))}</td>
+              <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.likes))}</td>
+              <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.comments))}</td>
+            </tr>
+          `;
         }).join('');
       }
+
       if (vBody) {
-        vBody.querySelectorAll('.copy-btn').forEach(btn => { 
-          btn.addEventListener('click', () => { 
-            try { const ta = document.createElement('textarea'); ta.value = btn.dataset.url || ''; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); const prev = btn.textContent; btn.textContent = '복사됨'; setTimeout(() => btn.textContent = prev, 1000); } catch (e) { btn.textContent = '실패'; setTimeout(() => btn.textContent = '복사', 1000); } 
-          }); 
+        vBody.querySelectorAll('.copy-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            try {
+              const ta = document.createElement('textarea');
+              ta.value = btn.dataset.url || '';
+              ta.style.position = 'fixed';
+              ta.style.opacity = '0';
+              document.body.appendChild(ta);
+              ta.select();
+              document.execCommand('copy');
+              document.body.removeChild(ta);
+              
+              const prev = btn.textContent;
+              btn.textContent = '복사됨';
+              setTimeout(() => { 
+                btn.textContent = prev; 
+              }, 1000);
+            } catch (e) {
+              btn.textContent = '실패';
+              setTimeout(() => { 
+                btn.textContent = '복사'; 
+              }, 1000);
+            }
+          });
         });
       }
     }
     
     function renderCreatorTrendChart(selectedMonth) {
-      if (!globalData.months || globalData.months.length === 0 || !document.getElementById('creatorTrendChart')) return;
+      if (!globalData.months || globalData.months.length === 0) return;
       if (typeof Chart === 'undefined') return;
       
       Chart.defaults.font.family = "'Pretendard', sans-serif";
-      
+
       const allMonthsDesc = globalData.months || [];
       const idx = allMonthsDesc.indexOf(selectedMonth);
       if (idx === -1) return;
-      
+
       const targetMonths = allMonthsDesc.slice(idx, idx + 3).reverse();
       const labels = targetMonths.map(m => `${m.split('.')[1]}월`);
-      
+
       const curMonthVideos = (globalData.creatorVideos || []).filter(v => v.month === selectedMonth);
       const creatorViewsMap = {};
       curMonthVideos.forEach(v => {
         if (!creatorViewsMap[v.creator]) creatorViewsMap[v.creator] = 0;
         creatorViewsMap[v.creator] += safeNumber(v.views);
       });
-      
+
       const topCreators = Object.keys(creatorViewsMap)
         .sort((a, b) => creatorViewsMap[b] - creatorViewsMap[a])
         .slice(0, 5); 
-        
+
       const colors = ['#8b5cf6', '#3b82f6', '#ec4899', '#f59e0b', '#10b981'];
-      
+
       const datasets = topCreators.map((creator, i) => {
         const data = targetMonths.map(m => {
           const monthVids = (globalData.creatorVideos || []).filter(v => v.month === m && v.creator === creator);
           return monthVids.reduce((sum, v) => sum + safeNumber(v.views), 0);
         });
-        
+
         return {
           label: creator,
           data: data,
@@ -1630,7 +1959,7 @@
           fill: false
         };
       });
-      
+
       if (creatorTrendChartInstance) creatorTrendChartInstance.destroy();
       const ctxContainer = document.getElementById('creatorTrendChart');
       if (!ctxContainer) return;
@@ -1643,8 +1972,7 @@
           datasets: datasets
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
+          responsive: true, maintainAspectRatio: false,
           interaction: { mode: 'index', intersect: false },
           plugins: { 
             legend: { position: 'top', labels: { color: '#64748b', font: { weight: 'bold' } } },
@@ -1666,81 +1994,266 @@
 
     function renderCreatorSection(month, prevMonth) {
       if(!document.getElementById('cr-total-views')) return;
+      
       const allCreatorVids = globalData.creatorVideos || [];
       const curVideos = allCreatorVids.filter(v => v.month === month).sort((a,b) => safeNumber(b.views) - safeNumber(a.views));
       const prevVideos = prevMonth ? allCreatorVids.filter(v => v.month === prevMonth) : [];
-      let curTotalViews = 0, curTotalLikes = 0, curTotalComments = 0; let prevTotalViews = 0, prevTotalLikes = 0, prevTotalComments = 0;
+
+      let curTotalViews = 0, curTotalLikes = 0, curTotalComments = 0;
+      let prevTotalViews = 0, prevTotalLikes = 0, prevTotalComments = 0;
+      
       const creatorMap = {};
-      curVideos.forEach(v => { curTotalViews += safeNumber(v.views); curTotalLikes += safeNumber(v.likes); curTotalComments += safeNumber(v.comments); if (!creatorMap[v.creator]) creatorMap[v.creator] = { curUploads: 0, curViews: 0, curLikes: 0, curComments: 0, prevViews: 0, prevLikes: 0, prevComments: 0 }; creatorMap[v.creator].curUploads++; creatorMap[v.creator].curViews += safeNumber(v.views); creatorMap[v.creator].curLikes += safeNumber(v.likes); creatorMap[v.creator].curComments += safeNumber(v.comments); });
-      prevVideos.forEach(v => { prevTotalViews += safeNumber(v.views); prevTotalLikes += safeNumber(v.likes); prevTotalComments += safeNumber(v.comments); if (!creatorMap[v.creator]) creatorMap[v.creator] = { curUploads: 0, curViews: 0, curLikes: 0, curComments: 0, prevViews: 0, prevLikes: 0, prevComments: 0 }; creatorMap[v.creator].prevViews += safeNumber(v.views); creatorMap[v.creator].prevLikes += safeNumber(v.likes); creatorMap[v.creator].prevComments += safeNumber(v.comments); });
 
-      setCounter('cr-total-views', curTotalViews); setCounter('cr-total-likes', curTotalLikes); setCounter('cr-total-comments', curTotalComments);
-      renderDiff(curTotalViews, prevMonth ? prevTotalViews : null, 'diff-cr-total-views'); renderDiff(curTotalLikes, prevMonth ? prevTotalLikes : null, 'diff-cr-total-likes'); renderDiff(curTotalComments, prevMonth ? prevTotalComments : null, 'diff-cr-total-comments');
+      curVideos.forEach(v => {
+        curTotalViews += safeNumber(v.views);
+        curTotalLikes += safeNumber(v.likes);
+        curTotalComments += safeNumber(v.comments);
 
+        if (!creatorMap[v.creator]) {
+          creatorMap[v.creator] = { curUploads: 0, curViews: 0, curLikes: 0, curComments: 0, prevViews: 0, prevLikes: 0, prevComments: 0 };
+        }
+        creatorMap[v.creator].curUploads++;
+        creatorMap[v.creator].curViews += safeNumber(v.views);
+        creatorMap[v.creator].curLikes += safeNumber(v.likes);
+        creatorMap[v.creator].curComments += safeNumber(v.comments);
+      });
+
+      prevVideos.forEach(v => {
+        prevTotalViews += safeNumber(v.views);
+        prevTotalLikes += safeNumber(v.likes);
+        prevTotalComments += safeNumber(v.comments);
+
+        if (!creatorMap[v.creator]) {
+          creatorMap[v.creator] = { curUploads: 0, curViews: 0, curLikes: 0, curComments: 0, prevViews: 0, prevLikes: 0, prevComments: 0 };
+        }
+        creatorMap[v.creator].prevViews += safeNumber(v.views);
+        creatorMap[v.creator].prevLikes += safeNumber(v.likes);
+        creatorMap[v.creator].prevComments += safeNumber(v.comments);
+      });
+
+      // 1. 요약 카드 업데이트
+      setCounter('cr-total-views', curTotalViews);
+      setCounter('cr-total-likes', curTotalLikes);
+      setCounter('cr-total-comments', curTotalComments);
+      
+      renderDiff(curTotalViews, prevMonth ? prevTotalViews : null, 'diff-cr-total-views');
+      renderDiff(curTotalLikes, prevMonth ? prevTotalLikes : null, 'diff-cr-total-likes');
+      renderDiff(curTotalComments, prevMonth ? prevTotalComments : null, 'diff-cr-total-comments');
+
+      // 2. 크리에이터별 비교 테이블
       const crTbody = document.getElementById('creatorSummaryBody');
       const sortedCreators = Object.keys(creatorMap).sort((a,b) => creatorMap[b].curViews - creatorMap[a].curViews);
-      if (sortedCreators.length > 0) {
-        crTbody.innerHTML = sortedCreators.map(name => {
-          const d = creatorMap[name]; if (d.curUploads === 0 && d.prevViews === 0) return '';
-          return `<tr><td style="text-align:center;"><span class="creator-badge">${name}</span></td><td style="text-align:center; font-weight:900;" class="num-font">${d.curUploads}건</td><td style="text-align:right;"><span class="num-font" style="font-weight:900;">${formatNumber(d.curViews)}</span>${formatDiffHTML(d.curViews, prevMonth ? d.prevViews : null)}</td><td style="text-align:right;"><span class="num-font" style="font-weight:900;">${formatNumber(d.curLikes)}</span>${formatDiffHTML(d.curLikes, prevMonth ? d.prevLikes : null)}</td><td style="text-align:right;"><span class="num-font" style="font-weight:900;">${formatNumber(d.curComments)}</span>${formatDiffHTML(d.curComments, prevMonth ? d.prevComments : null)}</td></tr>`;
-        }).join('');
-      } else { crTbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:30px; color:#94a3b8;">해당 월의 크리에이터 데이터가 없습니다.</td></tr>`; }
 
-      const vBody = document.getElementById('creatorVideoBody'); const vBtn = document.getElementById('creatorVideoMoreBtn');
-      const rowsToShow = showAllCreatorVideos ? curVideos : curVideos.slice(0, 10);
-      if (curVideos.length > 0) {
-        vBody.innerHTML = rowsToShow.map((v) => {
-          const tagClass = v.type.toUpperCase() === 'VOD' ? 'vod' : 'shorts';
-          return `<tr><td style="text-align:center;"><span class="num-font">${v.date}</span></td><td style="text-align:center;"><span class="creator-badge">${v.creator}</span></td><td style="text-align:center;"><span class="type-badge ${tagClass}">${v.type}</span></td><td><div class="video-title">${v.title}</div><div class="video-url"><span class="url-text" title="${v.url}">${v.url}</span><a class="url-btn open-btn" href="${v.url}" target="_blank" rel="noopener noreferrer">열기</a><button class="url-btn copy-btn" data-url="${v.url}">복사</button></div></td><td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.views))}</td><td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.likes))}</td><td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.comments))}</td></tr>`;
-        }).join('');
-        if(vBtn){ vBtn.style.display = curVideos.length > 10 ? 'inline-flex' : 'none'; vBtn.textContent = showAllCreatorVideos ? '접기' : `더보기 (${curVideos.length - 10}개 더)`; }
-      } else {
-        vBody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:#cbd5e1;">데이터가 없습니다.</td></tr>`; if(vBtn) vBtn.style.display = 'none';
+      if (crTbody) {
+        if (sortedCreators.length > 0) {
+          crTbody.innerHTML = sortedCreators.map(name => {
+            const d = creatorMap[name];
+            if (d.curUploads === 0 && d.prevViews === 0) return '';
+            return `
+              <tr>
+                <td style="text-align:center;"><span class="creator-badge">${name}</span></td>
+                <td style="text-align:center; font-weight:900;" class="num-font">${d.curUploads}건</td>
+                <td style="text-align:right;">
+                  <span class="num-font" style="font-weight:900;">${formatNumber(d.curViews)}</span>
+                  ${formatDiffHTML(d.curViews, prevMonth ? d.prevViews : null)}
+                </td>
+                <td style="text-align:right;">
+                  <span class="num-font" style="font-weight:900;">${formatNumber(d.curLikes)}</span>
+                  ${formatDiffHTML(d.curLikes, prevMonth ? d.prevLikes : null)}
+                </td>
+                <td style="text-align:right;">
+                  <span class="num-font" style="font-weight:900;">${formatNumber(d.curComments)}</span>
+                  ${formatDiffHTML(d.curComments, prevMonth ? d.prevComments : null)}
+                </td>
+              </tr>
+            `;
+          }).join('');
+        } else {
+          crTbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:30px; color:#94a3b8;">해당 월의 크리에이터 데이터가 없습니다.</td></tr>`;
+        }
       }
-      vBody.querySelectorAll('.copy-btn').forEach(btn => { btn.addEventListener('click', () => { try { const ta = document.createElement('textarea'); ta.value = btn.dataset.url || ''; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); const prev = btn.textContent; btn.textContent = '복사됨'; setTimeout(() => btn.textContent = prev, 1000); } catch (e) { btn.textContent = '실패'; setTimeout(() => btn.textContent = '복사', 1000); } }); });
+
+      // 3. 영상 상세 목록 테이블 (최대 10개 혹은 전체)
+      const vBody = document.getElementById('creatorVideoBody');
+      const vBtn = document.getElementById('creatorVideoMoreBtn');
+      
+      const rowsToShow = showAllCreatorVideos ? curVideos : curVideos.slice(0, 10);
+      
+      if (vBody) {
+        if (curVideos.length > 0) {
+          vBody.innerHTML = rowsToShow.map((v) => {
+            const tagClass = v.type.toUpperCase() === 'VOD' ? 'vod' : 'shorts';
+            return `
+            <tr>
+              <td style="text-align:center;"><span class="num-font">${v.date}</span></td>
+              <td style="text-align:center;"><span class="creator-badge">${v.creator}</span></td>
+              <td style="text-align:center;"><span class="type-badge ${tagClass}">${v.type}</span></td>
+              <td>
+                <div class="video-title">${v.title}</div>
+                <div class="video-url">
+                  <span class="url-text" title="${v.url}">${v.url}</span>
+                  <a class="url-btn open-btn" href="${v.url}" target="_blank" rel="noopener noreferrer">열기</a>
+                  <button class="url-btn copy-btn" data-url="${v.url}">복사</button>
+                </div>
+              </td>
+              <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.views))}</td>
+              <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.likes))}</td>
+              <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.comments))}</td>
+            </tr>
+            `;
+          }).join('');
+
+          if(vBtn) {
+            vBtn.style.display = curVideos.length > 10 ? 'inline-flex' : 'none';
+            vBtn.textContent = showAllCreatorVideos ? '접기' : `더보기 (${curVideos.length - 10}개 더)`;
+          }
+        } else {
+          vBody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:#cbd5e1;">데이터가 없습니다.</td></tr>`;
+          if(vBtn) vBtn.style.display = 'none';
+        }
+
+        vBody.querySelectorAll('.copy-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            try {
+              const ta = document.createElement('textarea');
+              ta.value = btn.dataset.url || '';
+              ta.style.position = 'fixed';
+              ta.style.opacity = '0';
+              document.body.appendChild(ta);
+              ta.select();
+              document.execCommand('copy');
+              document.body.removeChild(ta);
+              
+              const prev = btn.textContent;
+              btn.textContent = '복사됨';
+              setTimeout(() => { btn.textContent = prev; }, 1000);
+            } catch (e) {
+              btn.textContent = '실패';
+              setTimeout(() => { btn.textContent = '복사'; }, 1000);
+            }
+          });
+        });
+      }
     }
 
+    // Chart.js Custom Tooltip Handler for DAU chart
     function customDAUTooltipHandler(context) {
-      const {chart, tooltip} = context; let tooltipEl = document.getElementById('chartjs-custom-tooltip');
-      if (!tooltipEl) { tooltipEl = document.createElement('div'); tooltipEl.id = 'chartjs-custom-tooltip'; tooltipEl.style.background = 'rgba(15, 23, 42, 0.95)'; tooltipEl.style.borderRadius = '12px'; tooltipEl.style.opacity = 1; tooltipEl.style.pointerEvents = 'none'; tooltipEl.style.position = 'absolute'; tooltipEl.style.transform = 'translate(-50%, 0)'; tooltipEl.style.transition = 'all .1s ease'; tooltipEl.style.zIndex = 99999; tooltipEl.style.padding = '16px'; tooltipEl.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)'; tooltipEl.style.width = '240px'; document.body.appendChild(tooltipEl); }
-      if (tooltip.opacity === 0) { tooltipEl.style.opacity = 0; return; }
-      const dataIndex = tooltip.dataPoints[0].dataIndex; const datasetIndex = tooltip.dataPoints[0].datasetIndex;
-      const dauValue = chart.data.datasets[datasetIndex].data[dataIndex]; const videoInfo = chart.data.datasets[datasetIndex].videoData ? chart.data.datasets[datasetIndex].videoData[dataIndex] : null;
-      let innerHtml = `<div style="font-weight: 900; font-size: 15px; margin-bottom: ${videoInfo ? '12px' : '0'}; color: #fff; text-align: center;">DAU: ${formatNumber(dauValue)}</div>`;
-      if (videoInfo) {
-        const videoId = getYoutubeVideoId(videoInfo.url); const thumbUrl = videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : '{{LOGO_LOADING}}';
-        const tagClass = videoInfo.type.toUpperCase() === 'VOD' ? 'vod' : 'shorts'; const tagColor = tagClass === 'vod' ? '#3b82f6' : '#ef4444'; const tagBg = tagClass === 'vod' ? '#eff6ff' : '#fef2f2';
-        innerHtml += `<div style="border-top: 1px solid rgba(255,255,255,0.15); margin-bottom: 12px;"></div><img src="${thumbUrl}" style="width: 100%; border-radius: 8px; margin-bottom: 12px; object-fit: cover; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1);" crossorigin="anonymous"><div style="font-size: 11px; font-weight: 800; margin-bottom: 6px; display: flex; align-items: center;"><span style="background: ${tagBg}; color: ${tagColor}; padding: 3px 8px; border-radius: 6px;">${videoInfo.type}</span></div><div style="font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 10px; color: #fff; word-break: keep-all;">${videoInfo.title}</div><div style="font-size: 12px; color: #cbd5e1; display:flex; gap: 12px; font-family:'Montserrat', sans-serif; font-weight: 600;"><span>👁️ ${formatNumber(videoInfo.views)}</span><span>❤️ ${formatNumber(videoInfo.likes)}</span></div>`;
+      const {chart, tooltip} = context;
+      let tooltipEl = document.getElementById('chartjs-custom-tooltip');
+
+      if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.id = 'chartjs-custom-tooltip';
+        tooltipEl.style.background = 'rgba(15, 23, 42, 0.95)';
+        tooltipEl.style.borderRadius = '12px';
+        tooltipEl.style.opacity = 1;
+        tooltipEl.style.pointerEvents = 'none';
+        tooltipEl.style.position = 'absolute';
+        tooltipEl.style.transform = 'translate(-50%, 0)';
+        tooltipEl.style.transition = 'all .1s ease';
+        tooltipEl.style.zIndex = 99999;
+        tooltipEl.style.padding = '16px';
+        tooltipEl.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+        tooltipEl.style.width = '240px';
+        document.body.appendChild(tooltipEl);
       }
-      tooltipEl.innerHTML = innerHtml; const position = chart.canvas.getBoundingClientRect(); tooltipEl.style.opacity = 1;
-      let left = position.left + window.scrollX + tooltip.caretX; let top = position.top + window.scrollY + tooltip.caretY - tooltipEl.offsetHeight - 20;
-      if (top < window.scrollY) top = position.top + window.scrollY + tooltip.caretY + 20;
-      const rightEdge = left + (tooltipEl.offsetWidth / 2); const leftEdge = left - (tooltipEl.offsetWidth / 2);
-      if (rightEdge > window.innerWidth) left = window.innerWidth - (tooltipEl.offsetWidth / 2) - 10;
-      if (leftEdge < 0) left = (tooltipEl.offsetWidth / 2) + 10;
-      tooltipEl.style.left = left + 'px'; tooltipEl.style.top = top + 'px';
+
+      if (tooltip.opacity === 0) {
+        tooltipEl.style.opacity = 0;
+        return;
+      }
+
+      const dataIndex = tooltip.dataPoints[0].dataIndex;
+      const datasetIndex = tooltip.dataPoints[0].datasetIndex;
+      const dauValue = chart.data.datasets[datasetIndex].data[dataIndex];
+      const videoInfo = chart.data.datasets[datasetIndex].videoData ? chart.data.datasets[datasetIndex].videoData[dataIndex] : null;
+
+      let innerHtml = `<div style="font-weight: 900; font-size: 15px; margin-bottom: ${videoInfo ? '12px' : '0'}; color: #fff; text-align: center;">DAU: ${formatNumber(dauValue)}</div>`;
+
+      if (videoInfo) {
+        const videoId = getYoutubeVideoId(videoInfo.url);
+        const thumbUrl = videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : 'https://i.imgur.com/6xVELW0.png';
+        const tagClass = videoInfo.type.toUpperCase() === 'VOD' ? 'vod' : 'shorts';
+        const tagColor = tagClass === 'vod' ? '#3b82f6' : '#ef4444';
+        const tagBg = tagClass === 'vod' ? '#eff6ff' : '#fef2f2';
+        
+        innerHtml += `
+          <div style="border-top: 1px solid rgba(255,255,255,0.15); margin-bottom: 12px;"></div>
+          <img src="${thumbUrl}" style="width: 100%; border-radius: 8px; margin-bottom: 12px; object-fit: cover; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1);" crossorigin="anonymous">
+          <div style="font-size: 11px; font-weight: 800; margin-bottom: 6px; display: flex; align-items: center;">
+            <span style="background: ${tagBg}; color: ${tagColor}; padding: 3px 8px; border-radius: 6px;">${videoInfo.type}</span>
+          </div>
+          <div style="font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 10px; color: #fff; word-break: keep-all;">
+            ${videoInfo.title}
+          </div>
+          <div style="font-size: 12px; color: #cbd5e1; display:flex; gap: 12px; font-family:'Montserrat', sans-serif; font-weight: 600;">
+            <span>👁️ ${formatNumber(videoInfo.views)}</span>
+            <span>❤️ ${formatNumber(videoInfo.likes)}</span>
+          </div>
+        `;
+      }
+
+      tooltipEl.innerHTML = innerHtml;
+
+      const position = chart.canvas.getBoundingClientRect();
+      tooltipEl.style.opacity = 1;
+      
+      let left = position.left + window.scrollX + tooltip.caretX;
+      let top = position.top + window.scrollY + tooltip.caretY - tooltipEl.offsetHeight - 20;
+      
+      if (top < window.scrollY) {
+        top = position.top + window.scrollY + tooltip.caretY + 20;
+      }
+      const rightEdge = left + (tooltipEl.offsetWidth / 2);
+      const leftEdge = left - (tooltipEl.offsetWidth / 2);
+      if (rightEdge > window.innerWidth) {
+          left = window.innerWidth - (tooltipEl.offsetWidth / 2) - 10;
+      }
+      if (leftEdge < 0) {
+          left = (tooltipEl.offsetWidth / 2) + 10;
+      }
+
+      tooltipEl.style.left = left + 'px';
+      tooltipEl.style.top = top + 'px';
     }
 
     function renderSensorChart(selectedMonth) {
-      if (!globalData.sensor || !globalData.sensor[selectedMonth] || !document.getElementById('sensorTrendChart')) return;
+      if (!globalData.sensor || !globalData.sensor[selectedMonth]) return;
       if (typeof Chart === 'undefined') return;
+      
       Chart.defaults.font.family = "'Pretendard', sans-serif";
       
       const sensorData = globalData.sensor[selectedMonth] || {};
       const dailyData = sensorData.daily || [];
-      const labels = []; const dauValues = []; const bgColors = []; const videoDataArr = [];
+      
+      const labels = [];
+      const dauValues = [];
+      const bgColors = [];
+      const videoDataArr = [];
+
       const monthVideos = (globalData.videos || []).filter(v => v.month === selectedMonth);
-      
+
       dailyData.forEach(d => {
-        const dayNum = parseInt(d.date.slice(-2), 10); labels.push(`${dayNum}일`); dauValues.push(d.dau);
-        const dd = d.date.replace(/-/g, '.'); const matchedVideos = monthVideos.filter(v => v.date.replace(/-/g, '.') === dd).sort((a,b) => safeNumber(b.views) - safeNumber(a.views));
+        const dayNum = parseInt(d.date.slice(-2), 10);
+        labels.push(`${dayNum}일`);
+        dauValues.push(d.dau);
+
+        const dd = d.date.replace(/-/g, '.');
+        const matchedVideos = monthVideos.filter(v => v.date.replace(/-/g, '.') === dd).sort((a,b) => safeNumber(b.views) - safeNumber(a.views));
         const topVideo = matchedVideos.length > 0 ? matchedVideos[0] : null;
-        if (topVideo) { bgColors.push('#3b82f6'); videoDataArr.push(topVideo); } else { bgColors.push('#e2e8f0'); videoDataArr.push(null); }
+
+        if (topVideo) {
+          bgColors.push('#3b82f6');
+          videoDataArr.push(topVideo);
+        } else {
+          bgColors.push('#e2e8f0');
+          videoDataArr.push(null);
+        }
       });
-      
+
       if (sensorChartInstance) sensorChartInstance.destroy();
       const ctxContainer = document.getElementById('sensorTrendChart');
-      if (!ctxContainer) return;
+      if(!ctxContainer) return;
       
       const ctx = ctxContainer.getContext('2d');
       sensorChartInstance = new Chart(ctx, {
@@ -1756,7 +2269,8 @@
           }]
         },
         options: {
-          responsive: true, maintainAspectRatio: false,
+          responsive: true,
+          maintainAspectRatio: false,
           interaction: { mode: 'index', intersect: false },
           plugins: { 
             legend: { display: false },
@@ -1771,28 +2285,37 @@
     }
 
     function renderTrendLineChart(selectedMonth) {
-      if (!globalData.months || globalData.months.length === 0 || !document.getElementById('trendLineChart')) return;
+      if (!globalData.months || globalData.months.length === 0) return;
       if (typeof Chart === 'undefined') return;
+      
       Chart.defaults.font.family = "'Pretendard', sans-serif";
       
       const allMonthsDesc = globalData.months || [];
       const idx = allMonthsDesc.indexOf(selectedMonth);
       if (idx === -1) return;
-      
+
       const targetMonths = allMonthsDesc.slice(idx, idx + 6).reverse();
-      const labels = []; const viewData = []; const interactionData = [];
-      
+      const labels = [];
+      const viewData = [];
+      const interactionData = [];
+
       targetMonths.forEach(m => {
         labels.push(`${m.split('.')[1]}월`);
         const yt = globalData.youtube[m] || {};
         const cViews = safeNumber(yt.vViews) + safeNumber(yt.sViews);
+        
         let cLikes = 0, cComms = 0;
         const monthVids = (globalData.videos || []).filter(v => v.month === m);
-        monthVids.forEach(v => { cLikes += safeNumber(v.likes); cComms += safeNumber(v.comments); });
+        monthVids.forEach(v => { 
+          cLikes += safeNumber(v.likes); 
+          cComms += safeNumber(v.comments); 
+        });
         const cInt = cLikes + cComms + safeNumber(yt.cLikes);
-        viewData.push(cViews); interactionData.push(cInt);
+
+        viewData.push(cViews);
+        interactionData.push(cInt);
       });
-      
+
       if (trendChartInstance) trendChartInstance.destroy();
       const ctxContainer = document.getElementById('trendLineChart');
       if (!ctxContainer) return;
@@ -1810,7 +2333,9 @@
               backgroundColor: 'rgba(251, 191, 36, 0.1)',
               borderWidth: 3,
               pointBackgroundColor: '#fbbf24',
-              tension: 0.4, fill: true, yAxisID: 'y'
+              tension: 0.4,
+              fill: true,
+              yAxisID: 'y'
             },
             {
               label: '총 인터랙션 (좋아요+댓글)',
@@ -1819,14 +2344,19 @@
               backgroundColor: 'rgba(59, 130, 246, 0.1)',
               borderWidth: 3,
               pointBackgroundColor: '#3b82f6',
-              tension: 0.4, fill: true, yAxisID: 'y1'
+              tension: 0.4,
+              fill: true,
+              yAxisID: 'y1'
             }
           ]
         },
         options: {
-          responsive: true, maintainAspectRatio: false,
+          responsive: true,
+          maintainAspectRatio: false,
           interaction: { mode: 'index', intersect: false },
-          plugins: { legend: { labels: { color: '#64748b', font: { weight: 'bold' } } } },
+          plugins: {
+            legend: { labels: { color: '#64748b', font: { weight: 'bold' } } }
+          },
           scales: {
             x: { ticks: { color: '#64748b', font: { weight: 'bold' } }, grid: { color: '#e2e8f0' } },
             y: { type: 'linear', display: true, position: 'left', ticks: { color: '#fbbf24' }, grid: { color: '#e2e8f0' } },
@@ -1837,16 +2367,17 @@
     }
 
     function renderVideoSection(month) {
-      if(!document.getElementById('topVideoRankList')) return;
-      const videos = (globalData.videos || []).filter(v => v.month === month).sort((a, b) => safeNumber(b.views) - safeNumber(a.views));
       const topContainer = document.getElementById('topVideoRankList');
+      if(!topContainer) return;
+      
+      const videos = (globalData.videos || []).filter(v => v.month === month).sort((a, b) => safeNumber(b.views) - safeNumber(a.views));
       const top3 = videos.slice(0, 3);
       
       if (top3.length > 0) {
         topContainer.innerHTML = '<div class="top-3-grid">' + top3.map((v, index) => {
           const tagClass = v.type.toUpperCase() === 'VOD' ? 'vod' : 'shorts';
           const videoId = getYoutubeVideoId(v.url);
-          const thumbUrl = videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : '{{LOGO_LOADING}}';
+          const thumbUrl = videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : 'https://i.imgur.com/6xVELW0.png';
           
           return `
             <div class="top-video-card">
@@ -1885,13 +2416,15 @@
       } else {
         topContainer.innerHTML = `<div style="color:#94a3b8; text-align:center; padding: 40px; background:#f8fafc; border-radius:16px;">해당 월의 인기 영상 데이터가 없습니다.</div>`;
       }
+
       renderVideoTableOnly(month, videos);
     }
     
     function renderVideoTableOnly(month, cachedVideos) {
-      if(!document.getElementById('videoTableBody')) return;
-      const videos = cachedVideos || (globalData.videos || []).filter(v => v.month === month).sort((a, b) => safeNumber(b.views) - safeNumber(a.views));
       const vBody = document.getElementById('videoTableBody');
+      if(!vBody) return;
+      
+      const videos = cachedVideos || (globalData.videos || []).filter(v => v.month === month).sort((a, b) => safeNumber(b.views) - safeNumber(a.views));
       const vBtn = document.getElementById('videoMoreBtn');
       
       const rowsToShow = showAllVideos ? videos : videos.slice(0, 5);
@@ -1916,6 +2449,7 @@
             </tr>
           `;
         }).join('');
+
         if (vBtn) {
           vBtn.style.display = videos.length > 5 ? 'inline-flex' : 'none';
           vBtn.textContent = showAllVideos ? '접기' : `더보기 (${videos.length - 5}개 더)`;
@@ -1924,32 +2458,34 @@
         vBody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:40px; color:#cbd5e1;">데이터가 없습니다.</td></tr>`;
         if (vBtn) vBtn.style.display = 'none';
       }
-      
-      vBody.querySelectorAll('.copy-btn').forEach(btn => { 
-        btn.addEventListener('click', () => { 
-          try { 
-            const ta = document.createElement('textarea'); 
-            ta.value = btn.dataset.url || ''; 
-            ta.style.position = 'fixed'; 
-            ta.style.opacity = '0'; 
-            document.body.appendChild(ta); 
-            ta.select(); 
-            document.execCommand('copy'); 
-            document.body.removeChild(ta); 
-            const prev = btn.textContent; 
-            btn.textContent = '복사됨'; 
-            setTimeout(() => btn.textContent = prev, 1000); 
-          } catch (e) { 
-            btn.textContent = '실패'; 
-            setTimeout(() => btn.textContent = '복사', 1000); 
-          } 
-        }); 
+
+      vBody.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = btn.dataset.url || '';
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            
+            const prev = btn.textContent;
+            btn.textContent = '복사됨';
+            setTimeout(() => { btn.textContent = prev; }, 1000);
+          } catch (e) {
+            btn.textContent = '실패';
+            setTimeout(() => { btn.textContent = '복사'; }, 1000);
+          }
+        });
       });
     }
 
     function renderCafeChart(cafe, prevCafe, currentMonth, prevMonth) {
       if(!document.getElementById('cafeAgeChart')) return;
       if (typeof Chart === 'undefined') return;
+      
       Chart.defaults.font.family = "'Pretendard', sans-serif";
       Chart.defaults.color = '#64748b';
 
