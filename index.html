@@ -203,8 +203,8 @@
             <div class="section-title"><span>3</span> 페이지 활성화 설정</div>
             <p style="font-size: 13px; color:var(--text-muted); margin: -12px 0 16px 0;">체크 해제 시 해당 메뉴와 페이지가 HTML에서 완전히 제거됩니다.</p>
             <div class="toggle-list">
-              <div class="toggle-item"><span class="toggle-label">📊 센서타워 데이터</span><label class="switch"><input type="checkbox" id="chk_sensor" checked><span class="slider"></span></label></div>
-              <div class="toggle-item"><span class="toggle-label">💬 네이버 카페 데이터</span><label class="switch"><input type="checkbox" id="chk_cafe" checked><span class="slider"></span></label></div>
+              <div class="toggle-item"><span class="toggle-label">📊 데이터 요약 (센서타워)</span><label class="switch"><input type="checkbox" id="chk_sensor" checked><span class="slider"></span></label></div>
+              <div class="toggle-item"><span class="toggle-label">💬 커뮤니티 (네이버 카페)</span><label class="switch"><input type="checkbox" id="chk_cafe" checked><span class="slider"></span></label></div>
               <div class="toggle-item"><span class="toggle-label">▶️ 공식 유튜브 데이터</span><label class="switch"><input type="checkbox" id="chk_youtube" checked><span class="slider"></span></label></div>
               <div class="toggle-item"><span class="toggle-label">🎬 크리에이터 데이터</span><label class="switch"><input type="checkbox" id="chk_creator" checked><span class="slider"></span></label></div>
               <div class="toggle-item"><span class="toggle-label">📸 인스타그램 데이터</span><label class="switch"><input type="checkbox" id="chk_instagram" checked><span class="slider"></span></label></div>
@@ -398,7 +398,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>{{PAGE_TITLE}}</title>
+  <title data-i18n>{{PAGE_TITLE}}</title>
   
   <script>
     // 에러 발생 시 무한 로딩을 방지하고 화면에 원인을 출력하는 방어 코드
@@ -658,7 +658,7 @@
   <div id="loading-overlay">
     <div style="text-align: center; z-index: 10;">
       <img src="{{LOGO_LOAD}}" alt="Loading" class="loading-logo" crossorigin="anonymous">
-      <div class="loading-text" id="loading-msg-text">데이터 동기화 중...</div>
+      <div class="loading-text" id="loading-msg-text" data-i18n>데이터 동기화 중...</div>
     </div>
   </div>
 
@@ -670,38 +670,42 @@
       </div>
       <div class="nav-links">
         <select id="month-selector" class="month-selector">
-          <option value="">데이터 확인 중...</option>
+          <option value="" data-i18n>데이터 확인 중...</option>
         </select>
         <!-- SECTION_NAV_SENSOR -->
-        <a href="#sensor-section" class="nav-item-sensor">데이터 요약</a>
+        <a href="#sensor-section" class="nav-item-sensor" data-i18n>데이터 요약</a>
         <!-- /SECTION_NAV_SENSOR -->
         <!-- SECTION_NAV_CAFE -->
-        <a href="#cafe-section" class="nav-item-cafe">커뮤니티</a>
+        <a href="#cafe-section" class="nav-item-cafe" data-i18n>커뮤니티</a>
         <!-- /SECTION_NAV_CAFE -->
         <!-- SECTION_NAV_YOUTUBE -->
-        <a href="#youtube-section" class="nav-item-youtube">유튜브</a>
+        <a href="#youtube-section" class="nav-item-youtube" data-i18n>유튜브</a>
         <!-- /SECTION_NAV_YOUTUBE -->
         <!-- SECTION_NAV_CREATOR -->
-        <a href="#creator-section-1" class="nav-item-creator">크리에이터</a>
+        <a href="#creator-section-1" class="nav-item-creator" data-i18n>크리에이터</a>
         <!-- /SECTION_NAV_CREATOR -->
         <!-- SECTION_NAV_INSTA -->
-        <a href="#instagram-section" id="nav-instagram" style="display:none;" class="nav-item-insta">인스타그램</a>
+        <a href="#instagram-section" id="nav-instagram" style="display:none;" class="nav-item-insta" data-i18n>인스타그램</a>
         <!-- /SECTION_NAV_INSTA -->
         <!-- SECTION_NAV_TIKTOK -->
-        <a href="#tiktok-section" id="nav-tiktok" style="display:none;" class="nav-item-tiktok">틱톡</a>
+        <a href="#tiktok-section" id="nav-tiktok" style="display:none;" class="nav-item-tiktok" data-i18n>틱톡</a>
         <!-- /SECTION_NAV_TIKTOK -->
         <!-- SECTION_NAV_ISSUES -->
-        <a href="#issues-section" class="nav-item-issues">KEY ISSUES</a>
+        <a href="#issues-section" class="nav-item-issues" data-i18n>KEY ISSUES</a>
         <!-- /SECTION_NAV_ISSUES -->
         
         <div style="display: flex; gap: 8px; margin-left: 12px;">
+          <button class="pdf-btn" id="langToggleBtn" onclick="toggleLanguage()" style="background: var(--cr-purple); padding: 8px 12px;">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span id="langBtnText" style="margin-left:2px;">EN</span>
+          </button>
           <button class="pdf-btn html-btn" onclick="exportHTML()" style="background: var(--cr-cyan);">
             <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            HTML 내보내기
+            <span data-i18n>HTML 내보내기</span>
           </button>
           <button class="pdf-btn" onclick="exportPDF()">
             <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            PDF 내보내기
+            <span data-i18n>PDF 내보내기</span>
           </button>
         </div>
       </div>
@@ -709,27 +713,27 @@
   </header>
 
   <aside id="quick-nav" class="hide-on-pdf">
-    <a href="#hero" class="quick-link" data-target="hero"><span class="label">메인</span><div class="nav-dot"></div></a>
+    <a href="#hero" class="quick-link" data-target="hero"><span class="label" data-i18n>메인</span><div class="nav-dot"></div></a>
     <!-- SECTION_NAV_SENSOR -->
-    <a href="#sensor-section" class="quick-link nav-item-sensor" data-target="sensor-section"><span class="label">데이터 요약</span><div class="nav-dot"></div></a>
+    <a href="#sensor-section" class="quick-link nav-item-sensor" data-target="sensor-section"><span class="label" data-i18n>데이터 요약</span><div class="nav-dot"></div></a>
     <!-- /SECTION_NAV_SENSOR -->
     <!-- SECTION_NAV_CAFE -->
-    <a href="#cafe-section" class="quick-link nav-item-cafe" data-target="cafe-section"><span class="label">커뮤니티</span><div class="nav-dot"></div></a>
+    <a href="#cafe-section" class="quick-link nav-item-cafe" data-target="cafe-section"><span class="label" data-i18n>커뮤니티</span><div class="nav-dot"></div></a>
     <!-- /SECTION_NAV_CAFE -->
     <!-- SECTION_NAV_YOUTUBE -->
-    <a href="#youtube-section" class="quick-link nav-item-youtube" data-target="youtube-section"><span class="label">유튜브</span><div class="nav-dot"></div></a>
+    <a href="#youtube-section" class="quick-link nav-item-youtube" data-target="youtube-section"><span class="label" data-i18n>유튜브</span><div class="nav-dot"></div></a>
     <!-- /SECTION_NAV_YOUTUBE -->
     <!-- SECTION_NAV_CREATOR -->
-    <a href="#creator-section-1" class="quick-link nav-item-creator" data-target="creator-section-1"><span class="label">크리에이터</span><div class="nav-dot"></div></a>
+    <a href="#creator-section-1" class="quick-link nav-item-creator" data-target="creator-section-1"><span class="label" data-i18n>크리에이터</span><div class="nav-dot"></div></a>
     <!-- /SECTION_NAV_CREATOR -->
     <!-- SECTION_NAV_INSTA -->
-    <a href="#instagram-section" class="quick-link nav-item-insta" data-target="instagram-section" id="quick-nav-instagram" style="display:none;"><span class="label">인스타그램</span><div class="nav-dot"></div></a>
+    <a href="#instagram-section" class="quick-link nav-item-insta" data-target="instagram-section" id="quick-nav-instagram" style="display:none;"><span class="label" data-i18n>인스타그램</span><div class="nav-dot"></div></a>
     <!-- /SECTION_NAV_INSTA -->
     <!-- SECTION_NAV_TIKTOK -->
-    <a href="#tiktok-section" class="quick-link nav-item-tiktok" data-target="tiktok-section" id="quick-nav-tiktok" style="display:none;"><span class="label">틱톡</span><div class="nav-dot"></div></a>
+    <a href="#tiktok-section" class="quick-link nav-item-tiktok" data-target="tiktok-section" id="quick-nav-tiktok" style="display:none;"><span class="label" data-i18n>틱톡</span><div class="nav-dot"></div></a>
     <!-- /SECTION_NAV_TIKTOK -->
     <!-- SECTION_NAV_ISSUES -->
-    <a href="#issues-section" class="quick-link nav-item-issues" data-target="issues-section"><span class="label">주요 이슈</span><div class="nav-dot"></div></a>
+    <a href="#issues-section" class="quick-link nav-item-issues" data-target="issues-section"><span class="label" data-i18n>주요 이슈</span><div class="nav-dot"></div></a>
     <!-- /SECTION_NAV_ISSUES -->
   </aside>
 
@@ -744,15 +748,15 @@
     <img src="{{LOGO_HERO}}" class="game-logo-top-right" alt="Game Logo" crossorigin="anonymous">
 
     <div class="hero-copy">
-      <div class="hero-kicker" id="hero-date-kicker">데이터 동기화 중...</div>
-      <h1 class="hero-title title-font">{{REPORT_TITLE}}</h1>
-      <p class="hero-desc">공식 지표 및 주요 여론을 요약한 대시보드입니다.</p>
+      <div class="hero-kicker" id="hero-date-kicker" data-i18n>데이터 동기화 중...</div>
+      <h1 class="hero-title title-font" data-i18n>{{REPORT_TITLE}}</h1>
+      <p class="hero-desc" data-i18n>공식 지표 및 주요 여론을 요약한 대시보드입니다.</p>
       
       <div class="hero-pills">
-        <span class="hero-pill" id="hero-dau">평균 DAU -명</span>
-        <span class="hero-pill" id="hero-views">월간 조회수 -회</span>
-        <span class="hero-pill" id="hero-interactions">월간 인터랙션 -건</span>
-        <span class="hero-pill" id="hero-uploads">월간 업로드 -건</span>
+        <span class="hero-pill" id="hero-dau">-</span>
+        <span class="hero-pill" id="hero-views">-</span>
+        <span class="hero-pill" id="hero-interactions">-</span>
+        <span class="hero-pill" id="hero-uploads">-</span>
       </div>
     </div>
 
@@ -767,22 +771,22 @@
         <div class="section-header cyan">
           <div>
             <div class="section-label">Data Overview</div>
-            <h2 class="section-title title-font">주요 데이터 지표</h2>
+            <h2 class="section-title title-font" data-i18n>주요 데이터 지표</h2>
           </div>
         </div>
         <div class="grid-4" style="margin-bottom: 24px;">
           <div class="glass-card" style="grid-column: span 1;">
-            <span class="metric-mini">월간 평균 활성 유저(DAU)</span>
+            <span class="metric-mini" data-i18n>월간 평균 활성 유저(DAU)</span>
             <div class="metric-big num-font"><span class="counter" id="sensor-dau" data-target="0">0</span></div>
             <div id="diff-sensor-dau"></div>
           </div>
         </div>
         <div class="glass-card" style="margin-bottom: 0px; grid-column: 1 / -1;">
-          <h3 style="margin:0; font-size:20px; color:#0f172a;">일간 지표 추이 및 영상 업로드 영향</h3>
+          <h3 style="margin:0; font-size:20px; color:#0f172a;" data-i18n>일간 지표 추이 및 영상 업로드 영향</h3>
           <div class="chart-box" style="height: 350px; margin-top: 16px; position:relative;">
             <canvas id="sensorTrendChart"></canvas>
           </div>
-          <div style="font-size: 12px; color:#64748b; margin-top:12px; text-align:right;">* 파란색 막대는 영상이 업로드된 날짜입니다. 막대에 마우스를 올려 확인해 보세요!</div>
+          <div style="font-size: 12px; color:#64748b; margin-top:12px; text-align:right;" data-i18n>* 파란색 막대는 영상이 업로드된 날짜입니다. 막대에 마우스를 올려 확인해 보세요!</div>
         </div>
       </section>
       <!-- /SECTION_SENSOR -->
@@ -792,27 +796,27 @@
         <div class="section-header">
           <div>
             <div class="section-label">Community</div>
-            <h2 class="section-title title-font">커뮤니티 활성 지표</h2>
+            <h2 class="section-title title-font" data-i18n>커뮤니티 활성 지표</h2>
           </div>
         </div>
         <div class="grid-4" style="margin-bottom: 0px;">
           <div class="glass-card">
-            <span class="metric-mini">월간 방문 횟수</span>
+            <span class="metric-mini" data-i18n>월간 방문 횟수</span>
             <div class="metric-big num-font"><span class="counter" id="cafe-visits" data-target="0">0</span></div>
             <div id="diff-cafe-visits"></div>
           </div>
           <div class="glass-card">
-            <span class="metric-mini">월간 게시글 수</span>
+            <span class="metric-mini" data-i18n>월간 게시글 수</span>
             <div class="metric-big num-font"><span class="counter" id="cafe-posts" data-target="0">0</span></div>
             <div id="diff-cafe-posts"></div>
           </div>
           <div class="glass-card">
-            <span class="metric-mini">월간 댓글 수</span>
+            <span class="metric-mini" data-i18n>월간 댓글 수</span>
             <div class="metric-big num-font"><span class="counter" id="cafe-comments" data-target="0">0</span></div>
             <div id="diff-cafe-comments"></div>
           </div>
           <div class="glass-card">
-            <span class="metric-mini">신규 가입자 수</span>
+            <span class="metric-mini" data-i18n>신규 가입자 수</span>
             <div class="metric-big num-font"><span class="counter" id="cafe-newusers" data-target="0">0</span></div>
             <div id="diff-cafe-newusers"></div>
           </div>
@@ -822,7 +826,7 @@
         <div class="section-header">
           <div>
             <div class="section-label">Community Demographics</div>
-            <h2 class="section-title title-font">카페 연령별 방문자 분포</h2>
+            <h2 class="section-title title-font" data-i18n>카페 연령별 방문자 분포</h2>
           </div>
         </div>
         <div class="glass-card" style="margin-bottom: 0px;">
@@ -838,11 +842,11 @@
         <div class="section-header red">
           <div>
             <div class="section-label" style="color:var(--cr-red);">YouTube Channel</div>
-            <h2 class="section-title title-font">공식 유튜브 채널 지표</h2>
+            <h2 class="section-title title-font" data-i18n>공식 유튜브 채널 지표</h2>
           </div>
         </div>
         <div class="glass-card" style="margin-bottom: 0;">
-          <h3 style="margin:0; font-size:20px; color:#0f172a;">유튜브 월별 조회수 및 인터랙션 추이 (최근 6개월)</h3>
+          <h3 style="margin:0; font-size:20px; color:#0f172a;" data-i18n>유튜브 월별 조회수 및 인터랙션 추이 (최근 6개월)</h3>
           <div class="chart-box" style="height: 350px;">
             <canvas id="trendLineChart"></canvas>
           </div>
@@ -853,49 +857,49 @@
         <div class="section-header red">
           <div>
             <div class="section-label" style="color:var(--cr-red);">YouTube Metrics</div>
-            <h2 class="section-title title-font">영상 및 게시물 성과</h2>
+            <h2 class="section-title title-font" data-i18n>영상 및 게시물 성과</h2>
           </div>
         </div>
-        <h3 style="font-size: 24px; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; color:#0f172a;">▶ 영상 성과 (VOD & Shorts)</h3>
+        <h3 style="font-size: 24px; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; color:#0f172a;" data-i18n>▶ 영상 성과 (VOD &amp; Shorts)</h3>
         <div class="grid-4" style="margin-bottom: 40px;">
           <div class="glass-card">
-            <span class="metric-mini">VOD 조회수</span>
+            <span class="metric-mini" data-i18n>VOD 조회수</span>
             <div class="metric-big num-font"><span class="counter" id="yt-v-views" data-target="0">0</span></div>
-            <span class="metric-sub" id="yt-v-ctr">클릭률: -</span>
+            <span class="metric-sub" id="yt-v-ctr"></span>
             <div id="diff-yt-v-views" style="margin-top: 8px;"></div>
           </div>
           <div class="glass-card">
-            <span class="metric-mini">VOD 평균 시청</span>
+            <span class="metric-mini" data-i18n>VOD 평균 시청</span>
             <div class="metric-big num-font" id="yt-v-avd">0:00</div>
-            <span class="metric-sub" id="yt-v-imp">노출수: 0</span>
+            <span class="metric-sub" id="yt-v-imp"></span>
           </div>
           <div class="glass-card">
-            <span class="metric-mini" style="color:#ef4444;">Shorts 조회수</span>
+            <span class="metric-mini" style="color:#ef4444;" data-i18n>Shorts 조회수</span>
             <div class="metric-big num-font"><span class="counter" id="yt-s-views" data-target="0">0</span></div>
-            <span class="metric-sub" id="yt-s-active">유효 조회: 0</span>
+            <span class="metric-sub" id="yt-s-active"></span>
             <div id="diff-yt-s-views" style="margin-top: 8px;"></div>
           </div>
           <div class="glass-card">
-            <span class="metric-mini" style="color:#ef4444;">Shorts 좋아요</span>
+            <span class="metric-mini" style="color:#ef4444;" data-i18n>Shorts 좋아요</span>
             <div class="metric-big num-font"><span class="counter" id="yt-s-likes" data-target="0">0</span></div>
-            <span class="metric-sub" id="yt-s-subs">구독자 유입: 0</span>
+            <span class="metric-sub" id="yt-s-subs"></span>
             <div id="diff-yt-s-likes" style="margin-top: 8px;"></div>
           </div>
         </div>
-        <h3 style="font-size: 24px; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; color:#0f172a;">💬 커뮤니티 게시물 성과</h3>
+        <h3 style="font-size: 24px; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; color:#0f172a;" data-i18n>💬 커뮤니티 게시물 성과</h3>
         <div class="grid-3" style="margin-bottom: 0;">
           <div class="glass-card">
-            <span class="metric-mini">게시물 노출수</span>
+            <span class="metric-mini" data-i18n>게시물 노출수</span>
             <div class="metric-big num-font"><span class="counter" id="yt-c-imp" data-target="0">0</span></div>
             <div id="diff-yt-c-imp"></div>
           </div>
           <div class="glass-card">
-            <span class="metric-mini">게시물 좋아요</span>
+            <span class="metric-mini" data-i18n>게시물 좋아요</span>
             <div class="metric-big num-font"><span class="counter" id="yt-c-likes" data-target="0">0</span></div>
             <div id="diff-yt-c-likes"></div>
           </div>
           <div class="glass-card">
-            <span class="metric-mini">구독자 유입 (커뮤니티)</span>
+            <span class="metric-mini" data-i18n>구독자 유입 (커뮤니티)</span>
             <div class="metric-big num-font"><span class="counter" id="yt-c-subs" data-target="0">0</span></div>
           </div>
         </div>
@@ -905,7 +909,7 @@
         <div class="section-header red">
           <div>
             <div class="section-label" style="color:var(--cr-red);">Demographics</div>
-            <h2 class="section-title title-font">유튜브 시청자층 연령 분포</h2>
+            <h2 class="section-title title-font" data-i18n>유튜브 시청자층 연령 분포</h2>
           </div>
         </div>
         <div class="glass-card" style="margin-bottom: 0;">
@@ -919,7 +923,7 @@
         <div class="section-header red">
           <div>
             <div class="section-label" style="color:var(--cr-red);">Top 3 Contents</div>
-            <h2 class="section-title title-font">이달의 인기 영상</h2>
+            <h2 class="section-title title-font" data-i18n>이달의 인기 영상</h2>
           </div>
         </div>
         <div class="glass-card" style="padding: 40px 32px; background: #ffffff; margin-bottom: 0;">
@@ -931,7 +935,7 @@
         <div class="section-header red">
           <div>
             <div class="section-label" style="color:var(--cr-red);">Video List</div>
-            <h2 class="section-title title-font">월간 영상 상세 데이터</h2>
+            <h2 class="section-title title-font" data-i18n>월간 영상 상세 데이터</h2>
           </div>
         </div>
         <div class="table-shell" style="margin-bottom:24px;">
@@ -939,12 +943,12 @@
             <table>
               <thead>
                 <tr>
-                  <th style="width:100px; text-align:center;">업로드 일자</th>
-                  <th style="width:80px; text-align:center;">유형</th>
-                  <th style="min-width:260px;">영상 제목 / URL</th>
-                  <th style="min-width:100px; text-align:right;">조회수</th>
-                  <th style="min-width:90px; text-align:right;">좋아요</th>
-                  <th style="min-width:90px; text-align:right;">댓글</th>
+                  <th style="width:100px; text-align:center;" data-i18n>업로드 일자</th>
+                  <th style="width:80px; text-align:center;" data-i18n>유형</th>
+                  <th style="min-width:260px;" data-i18n>영상 제목 / URL</th>
+                  <th style="min-width:100px; text-align:right;" data-i18n>조회수</th>
+                  <th style="min-width:90px; text-align:right;" data-i18n>좋아요</th>
+                  <th style="min-width:90px; text-align:right;" data-i18n>댓글</th>
                 </tr>
               </thead>
               <tbody id="videoTableBody"></tbody>
@@ -952,7 +956,7 @@
           </div>
         </div>
         <div class="table-actions hide-on-pdf" style="margin-bottom: 0;">
-          <button id="videoMoreBtn" class="more-btn" type="button">더보기</button>
+          <button id="videoMoreBtn" class="more-btn" type="button" data-i18n>더보기</button>
         </div>
       </section>
       <!-- /SECTION_YOUTUBE -->
@@ -962,28 +966,28 @@
         <div class="section-header purple">
           <div>
             <div class="section-label" style="color:var(--cr-purple);">Creator Overview</div>
-            <h2 class="section-title title-font">크리에이터 영상 동향</h2>
+            <h2 class="section-title title-font" data-i18n>크리에이터 영상 동향</h2>
           </div>
         </div>
         <div class="grid-3" style="margin-bottom: 40px;">
           <div class="glass-card" style="border-left: 4px solid var(--cr-purple);">
-            <span class="metric-mini">총 조회수 합계</span>
+            <span class="metric-mini" data-i18n>총 조회수 합계</span>
             <div class="metric-big num-font"><span class="counter" id="cr-total-views" data-target="0">0</span></div>
             <div id="diff-cr-total-views"></div>
           </div>
           <div class="glass-card" style="border-left: 4px solid var(--cr-purple);">
-            <span class="metric-mini">총 좋아요 합계</span>
+            <span class="metric-mini" data-i18n>총 좋아요 합계</span>
             <div class="metric-big num-font"><span class="counter" id="cr-total-likes" data-target="0">0</span></div>
             <div id="diff-cr-total-likes"></div>
           </div>
           <div class="glass-card" style="border-left: 4px solid var(--cr-purple);">
-            <span class="metric-mini">총 댓글 합계</span>
+            <span class="metric-mini" data-i18n>총 댓글 합계</span>
             <div class="metric-big num-font"><span class="counter" id="cr-total-comments" data-target="0">0</span></div>
             <div id="diff-cr-total-comments"></div>
           </div>
         </div>
         <div class="glass-card" style="margin-bottom: 0;">
-          <h3 style="margin:0; font-size:20px; color:#0f172a;">상위 크리에이터 월별 조회수 추이 (최근 3개월)</h3>
+          <h3 style="margin:0; font-size:20px; color:#0f172a;" data-i18n>상위 크리에이터 월별 조회수 추이 (최근 3개월)</h3>
           <div class="chart-box" style="height: 300px;">
             <canvas id="creatorTrendChart"></canvas>
           </div>
@@ -994,7 +998,7 @@
         <div class="section-header purple">
           <div>
             <div class="section-label" style="color:var(--cr-purple);">Creator Comparison</div>
-            <h2 class="section-title title-font">크리에이터별 지표 (전월 비교)</h2>
+            <h2 class="section-title title-font" data-i18n>크리에이터별 지표 (전월 비교)</h2>
           </div>
         </div>
         <div class="table-shell" style="margin-bottom: 0;">
@@ -1002,11 +1006,11 @@
             <table>
               <thead>
                 <tr>
-                  <th style="text-align:center;">크리에이터</th>
-                  <th style="text-align:center;">업로드 수</th>
-                  <th style="text-align:right;">조회수 합계</th>
-                  <th style="text-align:right;">좋아요 합계</th>
-                  <th style="text-align:right;">댓글 합계</th>
+                  <th style="text-align:center;" data-i18n>크리에이터</th>
+                  <th style="text-align:center;" data-i18n>업로드 수</th>
+                  <th style="text-align:right;" data-i18n>조회수 합계</th>
+                  <th style="text-align:right;" data-i18n>좋아요 합계</th>
+                  <th style="text-align:right;" data-i18n>댓글 합계</th>
                 </tr>
               </thead>
               <tbody id="creatorSummaryBody"></tbody>
@@ -1019,7 +1023,7 @@
         <div class="section-header purple">
           <div>
             <div class="section-label" style="color:var(--cr-purple);">Creator Video List</div>
-            <h2 class="section-title title-font">크리에이터 상세 영상 목록</h2>
+            <h2 class="section-title title-font" data-i18n>크리에이터 상세 영상 목록</h2>
           </div>
         </div>
         <div class="table-shell" style="margin-bottom:24px;">
@@ -1027,13 +1031,13 @@
             <table>
               <thead>
                 <tr>
-                  <th style="width:100px; text-align:center;">업로드 일자</th>
-                  <th style="width:110px; text-align:center;">크리에이터</th>
-                  <th style="width:80px; text-align:center;">유형</th>
-                  <th style="min-width:260px;">영상 제목 / URL</th>
-                  <th style="min-width:100px; text-align:right;">조회수</th>
-                  <th style="min-width:90px; text-align:right;">좋아요</th>
-                  <th style="min-width:90px; text-align:right;">댓글</th>
+                  <th style="width:100px; text-align:center;" data-i18n>업로드 일자</th>
+                  <th style="width:110px; text-align:center;" data-i18n>크리에이터</th>
+                  <th style="width:80px; text-align:center;" data-i18n>유형</th>
+                  <th style="min-width:260px;" data-i18n>영상 제목 / URL</th>
+                  <th style="min-width:100px; text-align:right;" data-i18n>조회수</th>
+                  <th style="min-width:90px; text-align:right;" data-i18n>좋아요</th>
+                  <th style="min-width:90px; text-align:right;" data-i18n>댓글</th>
                 </tr>
               </thead>
               <tbody id="creatorVideoBody"></tbody>
@@ -1041,7 +1045,7 @@
           </div>
         </div>
         <div class="table-actions hide-on-pdf" style="margin-bottom: 0;">
-          <button id="creatorVideoMoreBtn" class="more-btn" type="button">더보기</button>
+          <button id="creatorVideoMoreBtn" class="more-btn" type="button" data-i18n>더보기</button>
         </div>
       </section>
       <!-- /SECTION_CREATOR -->
@@ -1051,24 +1055,24 @@
         <div class="section-header pink">
           <div>
             <div class="section-label" style="color:var(--cr-pink);">Instagram</div>
-            <h2 class="section-title title-font">인스타그램 상세 성과</h2>
+            <h2 class="section-title title-font" data-i18n>인스타그램 상세 성과</h2>
           </div>
         </div>
         <div class="grid-4" style="margin-bottom: 0;">
           <div class="glass-card" style="border-left: 4px solid var(--cr-pink);">
-            <span class="metric-mini">월간 업로드 수</span>
-            <div class="metric-big num-font"><span class="counter" id="insta-total-uploads" data-target="0">0</span>건</div>
+            <span class="metric-mini" data-i18n>월간 업로드 수</span>
+            <div class="metric-big num-font"><span class="counter" id="insta-total-uploads" data-target="0">0</span><span class="unit-gun">건</span></div>
           </div>
           <div class="glass-card" style="border-left: 4px solid var(--cr-pink);">
-            <span class="metric-mini">총 조회수 합계</span>
+            <span class="metric-mini" data-i18n>총 조회수 합계</span>
             <div class="metric-big num-font"><span class="counter" id="insta-total-views" data-target="0">0</span></div>
           </div>
           <div class="glass-card" style="border-left: 4px solid var(--cr-pink);">
-            <span class="metric-mini">총 좋아요 합계</span>
+            <span class="metric-mini" data-i18n>총 좋아요 합계</span>
             <div class="metric-big num-font"><span class="counter" id="insta-total-likes" data-target="0">0</span></div>
           </div>
           <div class="glass-card" style="border-left: 4px solid var(--cr-pink);">
-            <span class="metric-mini">총 댓글 합계</span>
+            <span class="metric-mini" data-i18n>총 댓글 합계</span>
             <div class="metric-big num-font"><span class="counter" id="insta-total-comments" data-target="0">0</span></div>
           </div>
         </div>
@@ -1078,7 +1082,7 @@
         <div class="section-header pink">
           <div>
             <div class="section-label" style="color:var(--cr-pink);">Instagram List</div>
-            <h2 class="section-title title-font">인스타그램 게시물 상세</h2>
+            <h2 class="section-title title-font" data-i18n>인스타그램 게시물 상세</h2>
           </div>
         </div>
         <div class="table-shell" style="margin-bottom:0;">
@@ -1086,11 +1090,11 @@
             <table>
               <thead>
                 <tr>
-                  <th style="width:100px; text-align:center;">업로드 일자</th>
-                  <th style="min-width:260px;">내용 / URL</th>
-                  <th style="min-width:100px; text-align:right;">조회/재생수</th>
-                  <th style="min-width:90px; text-align:right;">좋아요</th>
-                  <th style="min-width:90px; text-align:right;">댓글</th>
+                  <th style="width:100px; text-align:center;" data-i18n>업로드 일자</th>
+                  <th style="min-width:260px;" data-i18n>내용 / URL</th>
+                  <th style="min-width:100px; text-align:right;" data-i18n>조회/재생수</th>
+                  <th style="min-width:90px; text-align:right;" data-i18n>좋아요</th>
+                  <th style="min-width:90px; text-align:right;" data-i18n>댓글</th>
                 </tr>
               </thead>
               <tbody id="instagramTableBody"></tbody>
@@ -1105,24 +1109,24 @@
         <div class="section-header black">
           <div>
             <div class="section-label" style="color:var(--cr-black);">TikTok</div>
-            <h2 class="section-title title-font">틱톡 상세 성과</h2>
+            <h2 class="section-title title-font" data-i18n>틱톡 상세 성과</h2>
           </div>
         </div>
         <div class="grid-4" style="margin-bottom: 0;">
           <div class="glass-card" style="border-left: 4px solid var(--cr-black);">
-            <span class="metric-mini">월간 업로드 수</span>
-            <div class="metric-big num-font"><span class="counter" id="tiktok-total-uploads" data-target="0">0</span>건</div>
+            <span class="metric-mini" data-i18n>월간 업로드 수</span>
+            <div class="metric-big num-font"><span class="counter" id="tiktok-total-uploads" data-target="0">0</span><span class="unit-gun">건</span></div>
           </div>
           <div class="glass-card" style="border-left: 4px solid var(--cr-black);">
-            <span class="metric-mini">총 조회수 합계</span>
+            <span class="metric-mini" data-i18n>총 조회수 합계</span>
             <div class="metric-big num-font"><span class="counter" id="tiktok-total-views" data-target="0">0</span></div>
           </div>
           <div class="glass-card" style="border-left: 4px solid var(--cr-black);">
-            <span class="metric-mini">총 좋아요 합계</span>
+            <span class="metric-mini" data-i18n>총 좋아요 합계</span>
             <div class="metric-big num-font"><span class="counter" id="tiktok-total-likes" data-target="0">0</span></div>
           </div>
           <div class="glass-card" style="border-left: 4px solid var(--cr-black);">
-            <span class="metric-mini">총 댓글 합계</span>
+            <span class="metric-mini" data-i18n>총 댓글 합계</span>
             <div class="metric-big num-font"><span class="counter" id="tiktok-total-comments" data-target="0">0</span></div>
           </div>
         </div>
@@ -1132,7 +1136,7 @@
         <div class="section-header black">
           <div>
             <div class="section-label" style="color:var(--cr-black);">TikTok List</div>
-            <h2 class="section-title title-font">틱톡 영상 상세</h2>
+            <h2 class="section-title title-font" data-i18n>틱톡 영상 상세</h2>
           </div>
         </div>
         <div class="table-shell" style="margin-bottom:0;">
@@ -1140,11 +1144,11 @@
             <table>
               <thead>
                 <tr>
-                  <th style="width:100px; text-align:center;">업로드 일자</th>
-                  <th style="min-width:260px;">내용 / URL</th>
-                  <th style="min-width:100px; text-align:right;">조회/재생수</th>
-                  <th style="min-width:90px; text-align:right;">좋아요</th>
-                  <th style="min-width:90px; text-align:right;">댓글</th>
+                  <th style="width:100px; text-align:center;" data-i18n>업로드 일자</th>
+                  <th style="min-width:260px;" data-i18n>내용 / URL</th>
+                  <th style="min-width:100px; text-align:right;" data-i18n>조회/재생수</th>
+                  <th style="min-width:90px; text-align:right;" data-i18n>좋아요</th>
+                  <th style="min-width:90px; text-align:right;" data-i18n>댓글</th>
                 </tr>
               </thead>
               <tbody id="tiktokTableBody"></tbody>
@@ -1159,14 +1163,14 @@
         <div class="section-header gold" style="position:relative; z-index:2;">
           <div>
             <div class="section-label" style="color:var(--cr-gold);">Key Issues</div>
-            <h2 class="section-title title-font">주요 여론 및 이슈 요약</h2>
+            <h2 class="section-title title-font" data-i18n>주요 여론 및 이슈 요약</h2>
           </div>
         </div>
 
         <div class="issue-grid" id="issuesList" style="position:relative; z-index:2;">
           <!-- JS 렌더링 -->
         </div>
-        <div id="no-issues-msg" style="position:relative; z-index:2; text-align:center; padding: 60px; color:#64748b; font-size:18px; font-weight:800; background:#ffffff; border-radius:var(--radius-2xl); border:1px solid #e2e8f0;">
+        <div id="no-issues-msg" style="position:relative; z-index:2; text-align:center; padding: 60px; color:#64748b; font-size:18px; font-weight:800; background:#ffffff; border-radius:var(--radius-2xl); border:1px solid #e2e8f0;" data-i18n>
           해당 월의 주요 이슈 데이터가 없습니다.
         </div>
       </section>
@@ -1178,18 +1182,182 @@
   <script>
     const SCRIPT_URL = "{{SCRIPT_URL}}"; 
 
-    let globalData = { months: [], cafe: {}, youtube: {}, issues: {}, videos: [], sensor: {}, creatorVideos: [], instagram: [], tiktok: [] };
+    // --- State & Dictionary Variables ---
+    let globalData = { months: [], cafe: {}, youtube: {}, issues: {}, videos: [], sensor: {}, creatorVideos: [], instagram: [], tiktok: [], words: {} };
     let cafeAgeChartInstance = null; let ytAgeChartInstance = null; let trendChartInstance = null; let sensorChartInstance = null; let creatorTrendChartInstance = null;
     let currentSelectedMonth = ""; let showAllVideos = false; let showAllCreatorVideos = false;
+    let currentLang = 'ko'; // 'ko' or 'en'
+
+    // Static Translation Dictionary (UI Elements)
+    const uiDictionary = {
+        "센서타워": "Sensor Tower",
+        "네이버 카페": "Naver Cafe",
+        "유튜브": "YouTube",
+        "크리에이터": "Creator",
+        "인스타그램": "Instagram",
+        "틱톡": "TikTok",
+        "주요 이슈": "Key Issues",
+        "HTML 내보내기": "Export HTML",
+        "PDF 내보내기": "Export PDF",
+        "메인": "Main",
+        "데이터 요약": "Data Overview",
+        "커뮤니티": "Community",
+        "유튜브 데이터": "YouTube Data",
+        "월간 커뮤니티 리포트": "Monthly Community Report",
+        "공식 지표 및 주요 여론을 요약한 대시보드입니다.": "Official Metrics & Key Issues Dashboard.",
+        "클래시 로얄 한국 공식 지표 및 주요 여론을 요약한 대시보드입니다.": "Clash Royale Korea Official Metrics & Key Issues Dashboard.",
+        "구독자": "Subscribers",
+        "평균 DAU": "Avg DAU",
+        "월간 조회수": "Monthly Views",
+        "월간 인터랙션": "Monthly Interactions",
+        "월간 업로드": "Monthly Uploads",
+        "월간 업로드 수": "Monthly Uploads",
+        "센서타워 주요 지표": "Sensor Tower Key Metrics",
+        "주요 데이터 지표": "Key Data Metrics",
+        "월간 평균 활성 유저(DAU)": "Monthly Avg Active Users (DAU)",
+        "월간 평균 DAU": "Monthly Avg DAU",
+        "일간 지표 추이 및 영상 업로드 영향": "Daily Metrics Trend & Video Upload Impact",
+        "일간 DAU 추이 및 영상 업로드 영향": "Daily DAU Trend & Video Upload Impact",
+        "* 파란색 막대는 영상이 업로드된 날짜입니다. 막대에 마우스를 올려 확인해 보세요!": "* Blue bars indicate video upload dates. Hover over them to check!",
+        "* 파란색 막대는 유튜브 영상이 업로드된 날짜입니다. 막대에 마우스를 올려 확인해 보세요!": "* Blue bars indicate YouTube video upload dates. Hover over them to check!",
+        "커뮤니티 활성 지표": "Community Activity Metrics",
+        "월간 방문 횟수": "Monthly Visits",
+        "월간 게시글 수": "Monthly Posts",
+        "월간 댓글 수": "Monthly Comments",
+        "신규 가입자 수": "New Users",
+        "카페 연령별 방문자 분포": "Naver Cafe Visitor Demographics",
+        "공식 유튜브 채널 지표": "Official YouTube Channel Metrics",
+        "유튜브 월별 조회수 및 인터랙션 추이 (최근 6개월)": "YouTube Monthly Views & Interactions (Last 6 Months)",
+        "영상 및 게시물 성과": "Video & Post Performance",
+        "▶ 영상 성과 (VOD & Shorts)": "▶ Video Performance (VOD & Shorts)",
+        "▶ 영상 성과 (VOD &amp; Shorts)": "▶ Video Performance (VOD & Shorts)",
+        "VOD 조회수": "VOD Views",
+        "클릭률": "CTR",
+        "VOD 평균 시청": "VOD Avg. View Duration",
+        "노출수": "Impressions",
+        "Shorts 조회수": "Shorts Views",
+        "유효 조회수": "Viewed (vs Swiped)",
+        "유효 조회": "Viewed",
+        "Shorts 좋아요": "Shorts Likes",
+        "구독자 유입": "Subscribers Gained",
+        "💬 커뮤니티 게시물 성과": "💬 Community Post Performance",
+        "게시물 노출수": "Post Impressions",
+        "게시물 좋아요": "Post Likes",
+        "구독자 유입 (커뮤니티)": "Subscribers Gained (Community)",
+        "유튜브 시청자층 연령 분포": "YouTube Audience Demographics",
+        "이달의 인기 영상": "Top Videos of the Month",
+        "월간 영상 상세 데이터": "Monthly Video Details",
+        "업로드 일자": "Upload Date",
+        "유형": "Type",
+        "영상 제목 / URL": "Video Title / URL",
+        "조회수": "Views",
+        "좋아요": "Likes",
+        "댓글": "Comments",
+        "더보기": "Show More",
+        "접기": "Show Less",
+        "크리에이터 영상 동향": "Creator Video Trends",
+        "총 조회수 합계": "Total Views",
+        "총 좋아요 합계": "Total Likes",
+        "총 댓글 합계": "Total Comments",
+        "상위 크리에이터 월별 조회수 추이 (최근 3개월)": "Top Creators Monthly Views Trend (Last 3 Months)",
+        "크리에이터별 지표 (전월 비교)": "Creator Metrics (MoM Comparison)",
+        "업로드 수": "Uploads",
+        "크리에이터 상세 영상 목록": "Creator Detailed Video List",
+        "인스타그램 상세 성과": "Instagram Performance",
+        "인스타그램 게시물 상세": "Instagram Post Details",
+        "내용 / URL": "Content / URL",
+        "조회/재생수": "Views/Plays",
+        "틱톡 상세 성과": "TikTok Performance",
+        "틱톡 영상 상세": "TikTok Video Details",
+        "주요 여론 및 이슈 요약": "Key Public Opinion & Issues Summary",
+        "해당 월의 주요 이슈 데이터가 없습니다.": "No key issue data for this month.",
+        "이전 데이터 없음": "No Previous Data",
+        "전월 대비": "MoM",
+        "전월 대비 변동 없음": "No MoM Change",
+        "데이터가 없습니다.": "No Data.",
+        "해당 월의 인기 영상 데이터가 없습니다.": "No popular video data for this month.",
+        "해당 월의 크리에이터 데이터가 없습니다.": "No creator data for this month.",
+        "제목": "Title",
+        "데이터": "Data",
+        "조회 수": "Views",
+        "댓글 수": "Comments",
+        "좋아요 수": "Likes",
+        "링크": "Link",
+        "이번 달": "This Month",
+        "이전 달": "Last Month",
+        "일일 DAU": "Daily DAU",
+        "총 조회수 (VOD+Shorts)": "Total Views (VOD+Shorts)",
+        "총 인터랙션 (좋아요+댓글)": "Total Interactions (Likes+Comments)",
+        "복사": "Copy",
+        "복사됨": "Copied",
+        "실패": "Failed",
+        "열기": "Open",
+        "데이터 확인 중...": "Loading data...",
+        "데이터 동기화 중...": "Syncing data...",
+        "10대": "10s", "20대": "20s", "30대": "30s", "40대 이상": "40s+",
+        "13-17세": "13-17", "18-24세": "18-24", "25-34세": "25-34", "35-44세": "35-44",
+        "45-54세": "45-54", "55-64세": "55-64", "65세 이상": "65+"
+    };
+
+    // --- Language Translation Functions ---
+    function toggleLanguage() {
+      currentLang = currentLang === 'ko' ? 'en' : 'ko';
+      document.getElementById('langBtnText').textContent = currentLang === 'ko' ? 'EN' : 'KR';
+      applyStaticTranslations();
+      updateDropdownTranslations();
+      
+      // Update unit suffixes in specific elements if any
+      document.querySelectorAll('.unit-gun').forEach(el => el.style.display = currentLang === 'en' ? 'none' : 'inline');
+
+      if (currentSelectedMonth) {
+        renderDashboard(currentSelectedMonth);
+      }
+    }
+
+    function applyStaticTranslations() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        if (!el.dataset.ko) el.dataset.ko = el.innerHTML.trim(); // Save original KR text
+        if (currentLang === 'en') {
+          el.innerHTML = t(el.dataset.ko);
+        } else {
+          el.innerHTML = el.dataset.ko;
+        }
+      });
+    }
+
+    function updateDropdownTranslations() {
+      const select = document.getElementById('month-selector');
+      if (!select || globalData.months.length === 0) return;
+      Array.from(select.options).forEach(opt => {
+        const val = opt.value;
+        if (!val) return;
+        opt.textContent = currentLang === 'en' 
+            ? `${val.split('.')[0]}-${val.split('.')[1]} Report` 
+            : `${val.split('.')[0]}년 ${val.split('.')[1]}월 리포트`;
+      });
+    }
+
+    function t(str) {
+      if (currentLang === 'ko') return str;
+      // 1. 구글시트 Words 탭에서 정의한 동적 번역 (ex. 크리에이터명) 우선
+      if (globalData.words && globalData.words[str]) {
+        return globalData.words[str];
+      }
+      // 2. 하드코딩된 UI 텍스트 번역
+      if (uiDictionary[str]) {
+        return uiDictionary[str];
+      }
+      return str; // 번역이 없으면 원문 반환
+    }
 
     async function exportHTML() {
       if (!currentSelectedMonth) { 
-        alert("데이터가 로드되지 않았습니다."); 
+        alert(t("데이터가 없습니다.")); 
         return; 
       }
       const overlay = document.getElementById('loading-overlay');
       const originalText = overlay.querySelector('.loading-text').textContent;
-      overlay.querySelector('.loading-text').textContent = "HTML 생성 중...";
+      overlay.querySelector('.loading-text').textContent = currentLang === 'en' ? "Generating HTML..." : "HTML 생성 중...";
       overlay.classList.remove('hide');
       
       await new Promise(resolve => setTimeout(resolve, 300));
@@ -1222,7 +1390,9 @@
         span.style.color = '#60a5fa'; 
         span.style.fontWeight = '900'; 
         span.style.fontSize = '14px';
-        span.textContent = currentSelectedMonth.split('.')[0] + '년 ' + currentSelectedMonth.split('.')[1] + '월 리포트';
+        span.textContent = currentLang === 'en' 
+            ? `${currentSelectedMonth.split('.')[0]}-${currentSelectedMonth.split('.')[1]} Report`
+            : `${currentSelectedMonth.split('.')[0]}년 ${currentSelectedMonth.split('.')[1]}월 리포트`;
         monthSelector.parentNode.replaceChild(span, monthSelector);
       }
 
@@ -1238,7 +1408,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a'); 
       a.href = url; 
-      a.download = `클래시로얄_월간리포트_${currentSelectedMonth}.html`;
+      a.download = `MonthlyReport_${currentSelectedMonth}.html`;
       document.body.appendChild(a); 
       a.click(); 
       document.body.removeChild(a); 
@@ -1250,7 +1420,7 @@
 
     async function exportPDF() {
       if (!currentSelectedMonth) { 
-        alert("데이터가 로드되지 않았습니다."); 
+        alert(t("데이터가 없습니다.")); 
         return; 
       }
       const { jsPDF } = window.jspdf;
@@ -1283,7 +1453,7 @@
 
       const overlay = document.getElementById('loading-overlay');
       const originalText = overlay.querySelector('.loading-text').textContent;
-      overlay.querySelector('.loading-text').textContent = "PDF 생성 중... (10~15초 소요)";
+      overlay.querySelector('.loading-text').textContent = currentLang === 'en' ? "Generating PDF... (10~15s)" : "PDF 생성 중... (10~15초 소요)";
       overlay.classList.remove('hide');
       
       document.body.classList.add('pdf-export-mode');
@@ -1330,6 +1500,7 @@
             el.style.flexDirection = 'column'; 
             el.style.justifyContent = 'center'; 
             el.style.margin = '0 auto'; 
+            el.style.padding = '50px 60px'; 
           } else { 
             el.style.width = '1440px'; 
             el.style.height = '1018px'; 
@@ -1384,7 +1555,7 @@
         pdf.addImage(imgData, 'JPEG', x, y, drawW, drawH);
       }
 
-      pdf.save(`리포트_${currentSelectedMonth}.pdf`);
+      pdf.save(`MonthlyReport_${currentSelectedMonth}.pdf`);
 
       document.body.classList.remove('pdf-export-mode');
       document.getElementById('top-nav').style.display = '';
@@ -1421,9 +1592,9 @@
       if (el) el.textContent = text; 
     }
     
-    function formatHero(val, unit) { 
-      if (val === undefined || val === null || val === 0 || isNaN(val) || val === '-' || val === '0') return '-'; 
-      return formatNumber(val) + unit; 
+    function formatHero(val, unitKo, unitEn = "") {
+      if (val === undefined || val === null || val === 0 || isNaN(val) || val === '-' || val === '0') return '-';
+      return formatNumber(val) + (currentLang === 'en' ? unitEn : unitKo);
     }
     
     function safeNumber(val) { 
@@ -1433,7 +1604,7 @@
     }
     
     function formatNumber(n) { 
-      return Number(n || 0).toLocaleString('ko-KR'); 
+      return Number(n || 0).toLocaleString('en-US'); 
     }
     
     function fixTimeFormat(str) {
@@ -1462,16 +1633,16 @@
       const el = document.getElementById(elementId); 
       if (!el) return;
       if (prev === undefined || prev === null) { 
-        el.innerHTML = '<span class="metric-sub" style="color:#64748b;">이전 데이터 없음</span>'; 
+        el.innerHTML = `<span class="metric-sub" style="color:#64748b;">${t('이전 데이터 없음')}</span>`; 
         return; 
       }
       const diff = current - prev;
       if (diff > 0) {
-        el.innerHTML = `<span class="kpi-diff diff-up">전월 대비 ▲ ${formatNumber(diff)}</span>`;
+        el.innerHTML = `<span class="kpi-diff diff-up">${t('전월 대비')} ▲ ${formatNumber(diff)}</span>`;
       } else if (diff < 0) {
-        el.innerHTML = `<span class="kpi-diff diff-down">전월 대비 ▼ ${formatNumber(Math.abs(diff))}</span>`;
+        el.innerHTML = `<span class="kpi-diff diff-down">${t('전월 대비')} ▼ ${formatNumber(Math.abs(diff))}</span>`;
       } else {
-        el.innerHTML = `<span class="kpi-diff diff-none">전월 대비 변동 없음</span>`;
+        el.innerHTML = `<span class="kpi-diff diff-none">${t('전월 대비 변동 없음')}</span>`;
       }
     }
     
@@ -1505,6 +1676,8 @@
       const msgText = document.getElementById('loading-msg-text');
       const logo = document.querySelector('.loading-logo');
 
+      applyStaticTranslations();
+
       if (SCRIPT_URL && SCRIPT_URL.includes("script.google.com/macros/s/")) {
         try {
           const controller = new AbortController();
@@ -1520,6 +1693,7 @@
           if(!globalData.creatorVideos) globalData.creatorVideos = [];
           if(!globalData.instagram) globalData.instagram = [];
           if(!globalData.tiktok) globalData.tiktok = [];
+          if(!globalData.words) globalData.words = {};
           
         } catch (error) {
           console.error("Data Fetch Error:", error);
@@ -1638,18 +1812,19 @@
       
       const months = globalData.months || [];
       if (months.length === 0) {
-        select.innerHTML = '<option>데이터 없음</option>';
+        select.innerHTML = `<option>${t('데이터가 없습니다.')}</option>`;
         const kicker = document.getElementById('hero-date-kicker');
-        if(kicker) kicker.textContent = '데이터가 없습니다.';
+        if(kicker) kicker.textContent = t('데이터가 없습니다.');
         return;
       }
 
       months.forEach(month => {
         const option = document.createElement('option');
         option.value = month;
-        option.textContent = `${month.split('.')[0]}년 ${month.split('.')[1]}월 리포트`;
         select.appendChild(option);
       });
+      
+      updateDropdownTranslations();
 
       select.addEventListener('change', (e) => {
         currentSelectedMonth = e.target.value;
@@ -1657,10 +1832,10 @@
         showAllCreatorVideos = false;
         
         const vBtn = document.getElementById('videoMoreBtn');
-        if(vBtn) vBtn.textContent = '더보기';
+        if(vBtn) vBtn.textContent = t('더보기');
         
         const cvBtn = document.getElementById('creatorVideoMoreBtn');
-        if(cvBtn) cvBtn.textContent = '더보기';
+        if(cvBtn) cvBtn.textContent = t('더보기');
         
         renderDashboard(currentSelectedMonth);
       });
@@ -1671,7 +1846,10 @@
 
     function renderDashboard(month) {
       if (!month) return;
-      setText('hero-date-kicker', `${month.split('.')[0]}년 ${month.split('.')[1]}월 데이터 기준`);
+      setText('hero-date-kicker', currentLang === 'en' 
+        ? `Data as of ${month.split('.')[0]}-${month.split('.')[1]}` 
+        : `${month.split('.')[0]}년 ${month.split('.')[1]}월 데이터 기준`
+      );
 
       const cafeData = globalData.cafe[month] || {};
       const ytData = globalData.youtube[month] || {};
@@ -1712,14 +1890,14 @@
       /* SECTION_CALL_YOUTUBE */
       if(document.getElementById('yt-v-views')) {
         setCounter('yt-v-views', safeNumber(ytData.vViews));
-        setText('yt-v-ctr', `클릭률: ${ytData.vCtr || '0%'}`);
+        setText('yt-v-ctr', `${t('클릭률')}: ${ytData.vCtr || '0%'}`);
         setText('yt-v-avd', fixTimeFormat(ytData.vDuration));
-        setText('yt-v-imp', `노출수: ${formatNumber(safeNumber(ytData.vImp))}`);
+        setText('yt-v-imp', `${t('노출수')}: ${formatNumber(safeNumber(ytData.vImp))}`);
 
         setCounter('yt-s-views', safeNumber(ytData.sViews));
-        setText('yt-s-active', `유효 조회수: ${formatNumber(safeNumber(ytData.sActive))}`);
+        setText('yt-s-active', `${t('유효 조회수')}: ${formatNumber(safeNumber(ytData.sActive))}`);
         setCounter('yt-s-likes', safeNumber(ytData.sLikes));
-        setText('yt-s-subs', `구독자 유입: ${formatNumber(safeNumber(ytData.sSubs))}`);
+        setText('yt-s-subs', `${t('구독자 유입')}: ${formatNumber(safeNumber(ytData.sSubs))}`);
 
         setCounter('yt-c-imp', safeNumber(ytData.cImp));
         setCounter('yt-c-likes', safeNumber(ytData.cLikes));
@@ -1737,7 +1915,7 @@
       }
       /* /SECTION_CALL_YOUTUBE */
 
-      // Hero Pills 업데이트 (데이터 누락 시 0이 아니라 - 기호 적용)
+      // Hero Pills 업데이트 
       const monthVideos = (globalData.videos || []).filter(v => v.month === month);
       const ytMetrics = globalData.metrics ? globalData.metrics[month] : null;
       
@@ -1761,10 +1939,10 @@
       });
       let totalInteractions = autoLikes + autoComments + safeNumber(ytData.cLikes);
       
-      setText('hero-views', `월간 조회수 ${formatHero(totalViews, '회')}`);
-      setText('hero-dau', `평균 DAU ${formatHero(safeNumber(sensorData.dau), '명')}`);
-      setText('hero-uploads', `월간 업로드 ${formatHero(totalUploads, '건')}`);
-      setText('hero-interactions', `월간 인터랙션 ${formatHero(totalInteractions, '건')}`);
+      setText('hero-views', `${t('월간 조회수')} ${formatHero(totalViews, '회', '')}`);
+      setText('hero-dau', `${t('평균 DAU')} ${formatHero(safeNumber(sensorData.dau), '명', '')}`);
+      setText('hero-uploads', `${t('월간 업로드')} ${formatHero(totalUploads, '건', '')}`);
+      setText('hero-interactions', `${t('월간 인터랙션')} ${formatHero(totalInteractions, '건', '')}`);
 
       /* SECTION_CALL_CREATOR */
       renderCreatorSection(month, prevMonth);
@@ -1848,13 +2026,19 @@
       if (issueData.length > 0) {
         if (issuesList) {
           issuesList.style.display = 'grid';
-          issuesList.innerHTML = issueData.map(issue => `
+          issuesList.innerHTML = issueData.map(issue => {
+            let displaySummary = issue.summary; 
+            if (currentLang === 'en') {
+               displaySummary = issue.summaryEn ? issue.summaryEn : issue.summary;
+            }
+            return `
             <div class="issue-card">
-              <h3 class="issue-topic">${issue.topic}</h3>
-              <span class="issue-keyword">${issue.keyword}</span>
-              <p class="issue-summary">${issue.summary}</p>
+              <h3 class="issue-topic">${t(issue.topic)}</h3>
+              <span class="issue-keyword">${t(issue.keyword)}</span>
+              <p class="issue-summary">${displaySummary}</p>
             </div>
-          `).join('');
+            `;
+          }).join('');
         }
         if (noIssuesMsg) noIssuesMsg.style.display = 'none';
       } else {
@@ -1875,8 +2059,8 @@
                 <div class="video-title" style="max-width:400px; -webkit-line-clamp: 3;">${v.content}</div>
                 <div class="video-url">
                   <span class="url-text" title="${v.url}">${v.url}</span>
-                  <a class="url-btn open-btn" href="${v.url}" target="_blank" rel="noopener noreferrer">열기</a>
-                  <button class="url-btn copy-btn" data-url="${v.url}">복사</button>
+                  <a class="url-btn open-btn" href="${v.url}" target="_blank" rel="noopener noreferrer">${t('열기')}</a>
+                  <button class="url-btn copy-btn" data-url="${v.url}">${t('복사')}</button>
                 </div>
               </td>
               <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.views))}</td>
@@ -1900,15 +2084,14 @@
               document.execCommand('copy');
               document.body.removeChild(ta);
               
-              const prev = btn.textContent;
-              btn.textContent = '복사됨';
+              btn.textContent = t('복사됨');
               setTimeout(() => { 
-                btn.textContent = prev; 
+                btn.textContent = t('복사'); 
               }, 1000);
             } catch (e) {
-              btn.textContent = '실패';
+              btn.textContent = t('실패');
               setTimeout(() => { 
-                btn.textContent = '복사'; 
+                btn.textContent = t('복사'); 
               }, 1000);
             }
           });
@@ -1927,7 +2110,7 @@
       if (idx === -1) return;
 
       const targetMonths = allMonthsDesc.slice(idx, idx + 3).reverse();
-      const labels = targetMonths.map(m => `${m.split('.')[1]}월`);
+      const labels = targetMonths.map(m => currentLang === 'en' ? `${m.split('.')[1]}` : `${m.split('.')[1]}월`);
 
       const curMonthVideos = (globalData.creatorVideos || []).filter(v => v.month === selectedMonth);
       const creatorViewsMap = {};
@@ -1949,7 +2132,7 @@
         });
 
         return {
-          label: creator,
+          label: t(creator),
           data: data,
           borderColor: colors[i % colors.length],
           backgroundColor: colors[i % colors.length] + '1A',
@@ -2031,7 +2214,6 @@
         creatorMap[v.creator].prevComments += safeNumber(v.comments);
       });
 
-      // 1. 요약 카드 업데이트
       setCounter('cr-total-views', curTotalViews);
       setCounter('cr-total-likes', curTotalLikes);
       setCounter('cr-total-comments', curTotalComments);
@@ -2040,7 +2222,6 @@
       renderDiff(curTotalLikes, prevMonth ? prevTotalLikes : null, 'diff-cr-total-likes');
       renderDiff(curTotalComments, prevMonth ? prevTotalComments : null, 'diff-cr-total-comments');
 
-      // 2. 크리에이터별 비교 테이블
       const crTbody = document.getElementById('creatorSummaryBody');
       const sortedCreators = Object.keys(creatorMap).sort((a,b) => creatorMap[b].curViews - creatorMap[a].curViews);
 
@@ -2048,11 +2229,11 @@
         if (sortedCreators.length > 0) {
           crTbody.innerHTML = sortedCreators.map(name => {
             const d = creatorMap[name];
-            if (d.curUploads === 0 && d.prevViews === 0) return '';
+            if (d.curUploads === 0 && d.prevViews === 0) return ''; 
             return `
               <tr>
-                <td style="text-align:center;"><span class="creator-badge">${name}</span></td>
-                <td style="text-align:center; font-weight:900;" class="num-font">${d.curUploads}건</td>
+                <td style="text-align:center;"><span class="creator-badge">${t(name)}</span></td>
+                <td style="text-align:center; font-weight:900;" class="num-font">${d.curUploads}${currentLang === 'en' ? '' : '건'}</td>
                 <td style="text-align:right;">
                   <span class="num-font" style="font-weight:900;">${formatNumber(d.curViews)}</span>
                   ${formatDiffHTML(d.curViews, prevMonth ? d.prevViews : null)}
@@ -2069,11 +2250,10 @@
             `;
           }).join('');
         } else {
-          crTbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:30px; color:#94a3b8;">해당 월의 크리에이터 데이터가 없습니다.</td></tr>`;
+          crTbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:30px; color:#94a3b8;">${t('해당 월의 크리에이터 데이터가 없습니다.')}</td></tr>`;
         }
       }
 
-      // 3. 영상 상세 목록 테이블 (최대 10개 혹은 전체)
       const vBody = document.getElementById('creatorVideoBody');
       const vBtn = document.getElementById('creatorVideoMoreBtn');
       
@@ -2086,14 +2266,14 @@
             return `
             <tr>
               <td style="text-align:center;"><span class="num-font">${v.date}</span></td>
-              <td style="text-align:center;"><span class="creator-badge">${v.creator}</span></td>
+              <td style="text-align:center;"><span class="creator-badge">${t(v.creator)}</span></td>
               <td style="text-align:center;"><span class="type-badge ${tagClass}">${v.type}</span></td>
               <td>
                 <div class="video-title">${v.title}</div>
                 <div class="video-url">
                   <span class="url-text" title="${v.url}">${v.url}</span>
-                  <a class="url-btn open-btn" href="${v.url}" target="_blank" rel="noopener noreferrer">열기</a>
-                  <button class="url-btn copy-btn" data-url="${v.url}">복사</button>
+                  <a class="url-btn open-btn" href="${v.url}" target="_blank" rel="noopener noreferrer">${t('열기')}</a>
+                  <button class="url-btn copy-btn" data-url="${v.url}">${t('복사')}</button>
                 </div>
               </td>
               <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.views))}</td>
@@ -2105,10 +2285,10 @@
 
           if(vBtn) {
             vBtn.style.display = curVideos.length > 10 ? 'inline-flex' : 'none';
-            vBtn.textContent = showAllCreatorVideos ? '접기' : `더보기 (${curVideos.length - 10}개 더)`;
+            vBtn.textContent = showAllCreatorVideos ? t('접기') : `${t('더보기')} (${curVideos.length - 10}${currentLang==='en'?' more':'개 더'})`;
           }
         } else {
-          vBody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:#cbd5e1;">데이터가 없습니다.</td></tr>`;
+          vBody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:#cbd5e1;">${t('데이터가 없습니다.')}</td></tr>`;
           if(vBtn) vBtn.style.display = 'none';
         }
 
@@ -2124,19 +2304,17 @@
               document.execCommand('copy');
               document.body.removeChild(ta);
               
-              const prev = btn.textContent;
-              btn.textContent = '복사됨';
-              setTimeout(() => { btn.textContent = prev; }, 1000);
+              btn.textContent = t('복사됨');
+              setTimeout(() => { btn.textContent = t('복사'); }, 1000);
             } catch (e) {
-              btn.textContent = '실패';
-              setTimeout(() => { btn.textContent = '복사'; }, 1000);
+              btn.textContent = t('실패');
+              setTimeout(() => { btn.textContent = t('복사'); }, 1000);
             }
           });
         });
       }
     }
 
-    // Chart.js Custom Tooltip Handler for DAU chart
     function customDAUTooltipHandler(context) {
       const {chart, tooltip} = context;
       let tooltipEl = document.getElementById('chartjs-custom-tooltip');
@@ -2235,7 +2413,7 @@
 
       dailyData.forEach(d => {
         const dayNum = parseInt(d.date.slice(-2), 10);
-        labels.push(`${dayNum}일`);
+        labels.push(`${dayNum}`);
         dauValues.push(d.dau);
 
         const dd = d.date.replace(/-/g, '.');
@@ -2261,7 +2439,7 @@
         data: {
           labels: labels,
           datasets: [{
-            label: '일일 DAU',
+            label: t('일일 DAU'),
             data: dauValues,
             backgroundColor: bgColors,
             borderRadius: 4,
@@ -2269,12 +2447,14 @@
           }]
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
+          responsive: true, maintainAspectRatio: false,
           interaction: { mode: 'index', intersect: false },
           plugins: { 
             legend: { display: false },
-            tooltip: { enabled: false, external: customDAUTooltipHandler }
+            tooltip: { 
+              enabled: false,
+              external: customDAUTooltipHandler
+            }
           },
           scales: {
             x: { ticks: { color: '#64748b', font: { weight: 'bold', size: 10 } }, grid: { display: false } },
@@ -2287,7 +2467,6 @@
     function renderTrendLineChart(selectedMonth) {
       if (!globalData.months || globalData.months.length === 0) return;
       if (typeof Chart === 'undefined') return;
-      
       Chart.defaults.font.family = "'Pretendard', sans-serif";
       
       const allMonthsDesc = globalData.months || [];
@@ -2300,7 +2479,7 @@
       const interactionData = [];
 
       targetMonths.forEach(m => {
-        labels.push(`${m.split('.')[1]}월`);
+        labels.push(currentLang === 'en' ? `${m.split('.')[1]}` : `${m.split('.')[1]}월`);
         const yt = globalData.youtube[m] || {};
         const cViews = safeNumber(yt.vViews) + safeNumber(yt.sViews);
         
@@ -2327,40 +2506,33 @@
           labels: labels,
           datasets: [
             {
-              label: '총 조회수 (VOD+Shorts)',
+              label: t('총 조회수 (VOD+Shorts)'),
               data: viewData,
               borderColor: '#fbbf24', 
               backgroundColor: 'rgba(251, 191, 36, 0.1)',
               borderWidth: 3,
               pointBackgroundColor: '#fbbf24',
-              tension: 0.4,
-              fill: true,
-              yAxisID: 'y'
+              tension: 0.4, fill: true, yAxisID: 'y'
             },
             {
-              label: '총 인터랙션 (좋아요+댓글)',
+              label: t('총 인터랙션 (좋아요+댓글)'),
               data: interactionData,
               borderColor: '#3b82f6', 
               backgroundColor: 'rgba(59, 130, 246, 0.1)',
               borderWidth: 3,
               pointBackgroundColor: '#3b82f6',
-              tension: 0.4,
-              fill: true,
-              yAxisID: 'y1'
+              tension: 0.4, fill: true, yAxisID: 'y1'
             }
           ]
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
+          responsive: true, maintainAspectRatio: false,
           interaction: { mode: 'index', intersect: false },
-          plugins: {
-            legend: { labels: { color: '#64748b', font: { weight: 'bold' } } }
-          },
+          plugins: { legend: { labels: { color: '#64748b', font: { weight: 'bold' } } } },
           scales: {
             x: { ticks: { color: '#64748b', font: { weight: 'bold' } }, grid: { color: '#e2e8f0' } },
             y: { type: 'linear', display: true, position: 'left', ticks: { color: '#fbbf24' }, grid: { color: '#e2e8f0' } },
-            y1: { type: 'linear', display: true, position: 'right', ticks: { color: '#3b82f6' }, grid: { drawOnChartArea: false } }
+            y1: { type: 'linear', display: true, position: 'right', ticks: { color: '#3b82f6' }, grid: { drawOnChartArea: false } },
           }
         }
       });
@@ -2380,41 +2552,41 @@
           const thumbUrl = videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : 'https://i.imgur.com/6xVELW0.png';
           
           return `
-            <div class="top-video-card">
-              <div class="top-video-thumb-wrap">
-                <div class="top-video-rank-badge">${index + 1}</div>
-                <img src="${thumbUrl}" alt="thumbnail" class="top-video-thumb-img" crossorigin="anonymous">
-              </div>
-              <table class="top-video-table">
-                <tr>
-                  <th class="tv-head">제목</th>
-                  <td colspan="3" class="tv-title">
-                    <span class="type-badge ${tagClass}" style="margin-right:8px; flex-shrink:0;">${v.type}</span> ${v.title}
-                  </td>
-                </tr>
-                <tr>
-                  <th rowspan="2" class="tv-head">데이터</th>
-                  <td class="tv-subhead">조회 수</td>
-                  <td class="tv-subhead">댓글 수</td>
-                  <td class="tv-subhead">좋아요 수</td>
-                </tr>
-                <tr>
-                  <td class="tv-data-val">${formatNumber(safeNumber(v.views))}</td>
-                  <td class="tv-data-val">${formatNumber(safeNumber(v.comments))}</td>
-                  <td class="tv-data-val">${formatNumber(safeNumber(v.likes))}</td>
-                </tr>
-                <tr>
-                  <th class="tv-head">링크</th>
-                  <td colspan="3" class="tv-link-td">
-                    <a href="${v.url}" target="_blank" class="tv-link">${v.url}</a>
-                  </td>
-                </tr>
-              </table>
+          <div class="top-video-card">
+            <div class="top-video-thumb-wrap">
+              <div class="top-video-rank-badge">${index + 1}</div>
+              <img src="${thumbUrl}" alt="thumbnail" class="top-video-thumb-img" crossorigin="anonymous">
             </div>
+            <table class="top-video-table">
+              <tr>
+                <th class="tv-head">${t('제목')}</th>
+                <td colspan="3" class="tv-title">
+                  <span class="type-badge ${tagClass}" style="margin-right:8px; flex-shrink:0;">${v.type}</span> ${v.title}
+                </td>
+              </tr>
+              <tr>
+                <th rowspan="2" class="tv-head">${t('데이터')}</th>
+                <td class="tv-subhead">${t('조회 수')}</td>
+                <td class="tv-subhead">${t('댓글 수')}</td>
+                <td class="tv-subhead">${t('좋아요 수')}</td>
+              </tr>
+              <tr>
+                <td class="tv-data-val">${formatNumber(safeNumber(v.views))}</td>
+                <td class="tv-data-val">${formatNumber(safeNumber(v.comments))}</td>
+                <td class="tv-data-val">${formatNumber(safeNumber(v.likes))}</td>
+              </tr>
+              <tr>
+                <th class="tv-head">${t('링크')}</th>
+                <td colspan="3" class="tv-link-td">
+                  <a href="${v.url}" target="_blank" class="tv-link">${v.url}</a>
+                </td>
+              </tr>
+            </table>
+          </div>
           `;
         }).join('') + '</div>';
       } else {
-        topContainer.innerHTML = `<div style="color:#94a3b8; text-align:center; padding: 40px; background:#f8fafc; border-radius:16px;">해당 월의 인기 영상 데이터가 없습니다.</div>`;
+        topContainer.innerHTML = `<div style="color:#94a3b8; text-align:center; padding: 40px; background:#f8fafc; border-radius:16px;">${t('해당 월의 인기 영상 데이터가 없습니다.')}</div>`;
       }
 
       renderVideoTableOnly(month, videos);
@@ -2432,30 +2604,30 @@
         vBody.innerHTML = rowsToShow.map((v) => {
           const tagClass = v.type.toUpperCase() === 'VOD' ? 'vod' : 'shorts';
           return `
-            <tr>
-              <td style="text-align:center;"><span class="num-font">${v.date}</span></td>
-              <td style="text-align:center;"><span class="type-badge ${tagClass}">${v.type}</span></td>
-              <td>
-                <div class="video-title">${v.title}</div>
-                <div class="video-url">
-                  <span class="url-text" title="${v.url}">${v.url}</span>
-                  <a class="url-btn open-btn" href="${v.url}" target="_blank" rel="noopener noreferrer">열기</a>
-                  <button class="url-btn copy-btn" data-url="${v.url}">복사</button>
-                </div>
-              </td>
-              <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.views))}</td>
-              <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.likes))}</td>
-              <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.comments))}</td>
-            </tr>
+          <tr>
+            <td style="text-align:center;"><span class="num-font">${v.date}</span></td>
+            <td style="text-align:center;"><span class="type-badge ${tagClass}">${v.type}</span></td>
+            <td>
+              <div class="video-title">${v.title}</div>
+              <div class="video-url">
+                <span class="url-text" title="${v.url}">${v.url}</span>
+                <a class="url-btn open-btn" href="${v.url}" target="_blank" rel="noopener noreferrer">${t('열기')}</a>
+                <button class="url-btn copy-btn" data-url="${v.url}">${t('복사')}</button>
+              </div>
+            </td>
+            <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.views))}</td>
+            <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.likes))}</td>
+            <td style="text-align:right; font-weight:900;" class="num-font">${formatNumber(safeNumber(v.comments))}</td>
+          </tr>
           `;
         }).join('');
 
         if (vBtn) {
           vBtn.style.display = videos.length > 5 ? 'inline-flex' : 'none';
-          vBtn.textContent = showAllVideos ? '접기' : `더보기 (${videos.length - 5}개 더)`;
+          vBtn.textContent = showAllVideos ? t('접기') : `${t('더보기')} (${videos.length - 5}${currentLang==='en'?' more':'개 더'})`;
         }
       } else {
-        vBody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:40px; color:#cbd5e1;">데이터가 없습니다.</td></tr>`;
+        vBody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:40px; color:#cbd5e1;">${t('데이터가 없습니다.')}</td></tr>`;
         if (vBtn) vBtn.style.display = 'none';
       }
 
@@ -2471,12 +2643,11 @@
             document.execCommand('copy');
             document.body.removeChild(ta);
             
-            const prev = btn.textContent;
-            btn.textContent = '복사됨';
-            setTimeout(() => { btn.textContent = prev; }, 1000);
+            btn.textContent = t('복사됨');
+            setTimeout(() => { btn.textContent = t('복사'); }, 1000);
           } catch (e) {
-            btn.textContent = '실패';
-            setTimeout(() => { btn.textContent = '복사'; }, 1000);
+            btn.textContent = t('실패');
+            setTimeout(() => { btn.textContent = t('복사'); }, 1000);
           }
         });
       });
@@ -2485,20 +2656,23 @@
     function renderCafeChart(cafe, prevCafe, currentMonth, prevMonth) {
       if(!document.getElementById('cafeAgeChart')) return;
       if (typeof Chart === 'undefined') return;
-      
       Chart.defaults.font.family = "'Pretendard', sans-serif";
       Chart.defaults.color = '#64748b';
 
       if (cafeAgeChartInstance) cafeAgeChartInstance.destroy();
       const ctx = document.getElementById('cafeAgeChart').getContext('2d');
       
-      const curLabel = currentMonth ? `${currentMonth.split('.')[1]}월 (선택)` : '이번 달';
-      const prevLabel = prevMonth ? `${prevMonth.split('.')[1]}월 (전달)` : '이전 달';
+      const curLabel = currentMonth 
+          ? (currentLang === 'en' ? `${currentMonth.split('.')[1]} (Selected)` : `${currentMonth.split('.')[1]}월 (선택)`) 
+          : t('이번 달');
+      const prevLabel = prevMonth 
+          ? (currentLang === 'en' ? `${prevMonth.split('.')[1]} (Prev)` : `${prevMonth.split('.')[1]}월 (전달)`) 
+          : t('이전 달');
 
       cafeAgeChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['10대', '20대', '30대', '40대 이상'],
+          labels: [t('10대'), t('20대'), t('30대'), t('40대 이상')],
           datasets: [
             {
               label: prevLabel,
@@ -2534,14 +2708,18 @@
       if (ytAgeChartInstance) ytAgeChartInstance.destroy();
       
       const parsePct = (str) => parseFloat(String(str).replace('%','')) || 0;
-      const curLabel = currentMonth ? `${currentMonth.split('.')[1]}월 (선택)` : '이번 달';
-      const prevLabel = prevMonth ? `${prevMonth.split('.')[1]}월 (전달)` : '이전 달';
+      const curLabel = currentMonth 
+          ? (currentLang === 'en' ? `${currentMonth.split('.')[1]} (Selected)` : `${currentMonth.split('.')[1]}월 (선택)`) 
+          : t('이번 달');
+      const prevLabel = prevMonth 
+          ? (currentLang === 'en' ? `${prevMonth.split('.')[1]} (Prev)` : `${prevMonth.split('.')[1]}월 (전달)`) 
+          : t('이전 달');
 
       const ctx = document.getElementById('ytAgeChart').getContext('2d');
       ytAgeChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['13-17세', '18-24세', '25-34세', '35-44세', '45-54세', '55-64세', '65세 이상'],
+          labels: [t('13-17세'), t('18-24세'), t('25-34세'), t('35-44세'), t('45-54세'), t('55-64세'), t('65세 이상')],
           datasets: [
             {
               label: prevLabel,
@@ -2756,7 +2934,6 @@
       template = template.replace(/{{LOGO_LOAD}}/g, document.getElementById('v_logo_load').value);
       template = template.replace(/{{LOGO_NAV}}/g, document.getElementById('v_logo_nav').value);
       template = template.replace(/{{LOGO_HERO}}/g, document.getElementById('v_logo_hero').value);
-      template = template.replace(/{{LOGO_LOADING}}/g, document.getElementById('v_logo_load').value);
 
       template = template.replace(/{{C_MAIN_URL}}/g, document.getElementById('c_main_url').value);
       template = template.replace(/{{C_MAIN_W}}/g, document.getElementById('c_main_w').value);
